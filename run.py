@@ -8,9 +8,9 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDENTIALS = Credentials.from_service_account_file("creds.json")
-SCOPED_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDENTIALS)
+CREDS = Credentials.from_service_account_file("creds.json")
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("progressive rock mp3 club")
 
 proto_prog_bands = SHEET.worksheet("Proto-Prog")
