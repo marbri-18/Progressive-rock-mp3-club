@@ -28,9 +28,33 @@ pprint(columns)
 print("******************************************************************")
 print("*            Welcome to the Progressive Rock mp3 club           *")
 print("******************************************************************\n \n")
-name = input("Please enter your first name here: \n")
+
+
+
+def get_name():
+    """
+    Gets name input from user
+    validates that user has input a name of three characters or more.
+    if valid sends request to user to complete survey.
+    """
+    error = True
+    while error:
+        name = input("Please enter your first name \n")
+        if len(name) < 3:
+            print("first name must be 3 characters or more.")
+            error = True
+        else:
+            error = False
+    print(f"Welcome {name}, \n Please complete our quick survey")
+    print("So we can provide you with recommendations for music you will love")
+
+get_name()
+
+
+
+
 print("\n")
-print("So that we can show you our best deals for the music you love.")
+print("")
 print("In the following 4 questions please rate your favourite bands from top to bottom.")
 print("Give six points to your favourite band in the list, ")
 print("five points for your second favourite and so on ,")
@@ -51,6 +75,7 @@ nice = input("How many votes do you give for the Nice?: \n")
 procol_harum = input("How many votes do you give for Procol Harum?: \n")
 moody = input("How many votes do you give for the Moody Blues?: \n")
 graaf = input("How many votes do you give for Van Der Graaf Generator?: \n")
+# validate q1 input
 print("For the bands in the Classic-Prog group which comprises of:")
 print("Pink Floyd")
 print("Genesis")
