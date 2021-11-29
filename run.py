@@ -74,17 +74,28 @@ def get_q1_input():
     q1 = []
     beatles = input("How many votes do you give for the Beatles?: \n")
     q1.append(beatles)
+    pretty_things = input("How many votes do you give for the Pretty Things?: \n")
+    q1.append(pretty_things)
+    nice = input("How many votes do you give for the Nice?: \n")
+    q1.append(nice)
+    procol_harum = input("How many votes do you give for Procol Harum?: \n")
+    q1.append(procol_harum)
+    moody = input("How many votes do you give for the Moody Blues?: \n")
+    q1.append(moody)
+    graaf = input("How many votes do you give for Van Der Graaf Generator?: \n")
+    q1.append(graaf)
     return q1
+
 
 q1_response = get_q1_input()
 print(q1_response)
 
 """
-pretty_things = input("How many votes do you give for the Pretty Things?: \n")
-nice = input("How many votes do you give for the Nice?: \n")
-procol_harum = input("How many votes do you give for Procol Harum?: \n")
-moody = input("How many votes do you give for the Moody Blues?: \n")
-graaf = input("How many votes do you give for Van Der Graaf Generator?: \n")
+
+
+
+
+
 # validate q1 input
 print("For the bands in the Classic-Prog group which comprises of:")
 print("Pink Floyd")
