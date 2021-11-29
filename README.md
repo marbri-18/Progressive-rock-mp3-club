@@ -1,5 +1,7 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+flow chart link = https://lucid.app/lucidchart/745dce97-b375-477a-8206-305d663e8823/edit?beaconFlowId=CB530221E3E599B0&invitationId=inv_99fdfcce-3d1c-4598-b6cc-7f0c1f72693f&page=0_0#
+
 Welcome Martin Bridgman,
 
 This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**

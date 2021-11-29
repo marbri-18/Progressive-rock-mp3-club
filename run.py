@@ -25,7 +25,7 @@ columns = [beatles, pretty_things, the_nice, procol_harum, moody_blues, vdgg ]
 pprint(columns)
 """
 
-print ("******************************************************************")
+print("******************************************************************")
 print("*            Welcome to the Progressive Rock mp3 club           *")
 print("******************************************************************\n \n")
 name = input("Please enter your first name here: \n")
