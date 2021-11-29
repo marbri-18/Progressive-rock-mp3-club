@@ -54,7 +54,6 @@ get_name()
 
 
 print("\n")
-print("")
 print("In the following 4 questions please rate your favourite bands from top to bottom.")
 print("Give six points to your favourite band in the list, ")
 print("five points for your second favourite and so on ,")
@@ -69,7 +68,18 @@ print("The Nice")
 print("Procol Harum")
 print("The Moody Blues")
 print("Van Der Graaf Generator \n")
-beatles = input("How many votes do you give for the Beatles?: \n")
+
+
+def get_q1_input():
+    q1 = []
+    beatles = input("How many votes do you give for the Beatles?: \n")
+    q1.append(beatles)
+    return q1
+
+q1_response = get_q1_input()
+print(q1_response)
+
+"""
 pretty_things = input("How many votes do you give for the Pretty Things?: \n")
 nice = input("How many votes do you give for the Nice?: \n")
 procol_harum = input("How many votes do you give for Procol Harum?: \n")
@@ -115,3 +125,4 @@ porcupine = input("How many votes do you give for Porcupine Tree?: \n")
 autumn = input("How many votes do you give for Mostly Autumn?: \n")
 dream = input("How many votes do you give for Dream Theatre?: \n")
 Radiohead = input("How many votes do you give for RadioHead?: \n")
+"""
