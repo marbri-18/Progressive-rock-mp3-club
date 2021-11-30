@@ -93,7 +93,7 @@ print("five points for your second favourite and so on ,")
 print("until you get to 1 point for your least favourite band.")
 print("Please note, you must give a different value for each band and you must give a score for every band.")
 print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
-
+print("\n -------------------------------------------------------\n")
 def get_q1_input():
     """
 
@@ -135,7 +135,7 @@ def get_q1_input():
     
 q1_response = get_q1_input()   
 print(q1_response)
-
+print("\n -------------------------------------------------------\n")
     
     
     
@@ -151,7 +151,7 @@ def get_q2_input():
     q2 = []
     error_q2 = True
     while error_q2:
-        print("Question 2: Classic Prog rock")
+        print("Question 2: Classic Progressive rock")
         print("For the bands in the Classic-Prog group which comprises of:")
         print("Pink Floyd")
         print("Genesis")
@@ -179,46 +179,82 @@ def get_q2_input():
     
 q2_response = get_q2_input()   
 print(q2_response)
+print("\n -------------------------------------------------------\n")
 
-"""
+def get_q3_input():
+    """
 
-print("For the bands in the Classic-Prog group which comprises of:")
-print("Pink Floyd")
-print("Genesis")
-print("Yes")
-print("Hawkwind")
-print("Rush")
-print("King Crimson \n")
-floyd = input("How many votes do you give for Pink Floyd?: \n")
-genesis = input("How many votes do you give for Genesis?: \n")
-yes = input("How many votes do you give for Yes?: \n")
-hawkwind = input("How many votes do you give for Hawkwind?: \n")
-rush = input("How many votes do you give for Rush?: \n")
-crimson = input("How many votes do you give for King Crimson?: \n")
-print("For the bands in the Neo-Prog group which comprises of:")
-print("Twelfth Night")
-print("Marillion")
-print("IQ")
-print("Pallas")
-print("Pendragon")
-print("Solstice \n")
-night = input("How many votes do you give for Twelfth Night?: \n")
-marillion = input("How many votes do you give for Marillion?: \n")
-iq = input("How many votes do you give for IQ?: \n")
-pallas = input("How many votes do you give for Pallas?: \n")
-pendragon = input("How many votes do you give for Pendragon?: \n")
-solstice = input("How many votes do you give for Solstice?: \n")
-print("For the bands in the ontemporary-Prog group which comprises of:")
-print("The Flower Kings")
-print("The Tangent")
-print("Porcupine Tree")
-print("Mostly Autumn")
-print("Dream Theatre")
-print("Radiohead \n")
-flower = input("How many votes do you give for The Flower Kings?: \n")
-tangent = input("How many votes do you give for the Tangent?: \n")
-porcupine = input("How many votes do you give for Porcupine Tree?: \n")
-autumn = input("How many votes do you give for Mostly Autumn?: \n")
-dream = input("How many votes do you give for Dream Theatre?: \n")
-Radiohead = input("How many votes do you give for RadioHead?: \n")
-"""
+    """
+    q3 = []
+    error_q3 = True
+    while error_q3:
+        print("Question 3: Neo-Progressive Rock")
+        print("For the bands in the Neo-Prog group which comprises of:")
+        print("Twelfth Night")
+        print("Marillion")
+        print("IQ")
+        print("Pallas")
+        print("Pendragon")
+        print("Solstice \n")
+        q3 = []        
+        score = survey_question("Twelfth Night")  
+        q3.append(score)
+        score = survey_question("Marillion")  
+        q3.append(score)
+        score = survey_question("IQ")  
+        q3.append(score)
+        score = survey_question("Pallas")  
+        q3.append(score)
+        score = survey_question("Pendragon")  
+        q3.append(score)
+        score = survey_question("Solstice")  
+        q3.append(score)
+
+
+        error_q3 = check_if_duplicates(q3)
+    return q3
+
+q3_response = get_q3_input()   
+print(q3_response)
+print("\n -------------------------------------------------------\n")   
+
+
+
+
+def get_q4_input():
+    """
+
+    """
+    q4 = []
+    error_q4 = True
+    while error_q4:
+        print("Question 4: Contemporary Progressive Rock")
+        print("For the bands in the Contemporary-Prog group which comprises of:")
+        print("The Flower Kings")
+        print("The Tangent")
+        print("Porcupine Tree")
+        print("Mostly Autumn")
+        print("Dream Theatre")
+        print("Radiohead \n")
+        q4 = []        
+        score = survey_question("The Flower Kings")  
+        q4.append(score)
+        score = survey_question("The Tangent")  
+        q4.append(score)
+        score = survey_question("Porcupine Tree")  
+        q4.append(score)
+        score = survey_question("Mostly Autumn")  
+        q4.append(score)
+        score = survey_question("Dream Theatre")  
+        q4.append(score)
+        score = survey_question("Radiohead")  
+        q4.append(score)
+
+
+        error_q4 = check_if_duplicates(q4)
+    return q4
+    
+q4_response = get_q4_input()   
+print(q4_response)
+
+print("http://www.progarchives.com/album.asp?id=1825")
