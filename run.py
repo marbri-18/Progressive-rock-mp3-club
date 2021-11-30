@@ -70,6 +70,13 @@ print("The Moody Blues")
 print("Van Der Graaf Generator \n")
 
 def check_input_range_and_integer(num):
+    """
+    """
+    try:
+        int(num)
+    except ValueError:
+        print("Answer must be a whole number between 1 and 6")
+        return True
     if num:
         if int(num) >= 1 and int(num) <= 6:
             return False
@@ -80,8 +87,11 @@ def check_input_range_and_integer(num):
         print("You have not entered a number for this question. This question must be answered with a number between 1 and 6.")
         return True
 
-        
+
 def get_q1_input():
+    """
+
+    """
     q1 = []
     error = True
     while error:
@@ -89,16 +99,37 @@ def get_q1_input():
         error = check_input_range_and_integer(beatles)
     q1.append(beatles)
 
-    pretty_things = input("How many votes do you give for the Pretty Things?: \n")
+    error = True
+    while error:
+        pretty_things = input("How many votes do you give for the Pretty Things?: \n")
+        error = check_input_range_and_integer(pretty_things)
     q1.append(pretty_things)
-    nice = input("How many votes do you give for the Nice?: \n")
+
+    error = True
+    while error:
+        nice = input("How many votes do you give for the Nice?: \n")
+        error = check_input_range_and_integer(nice)
     q1.append(nice)
-    procol_harum = input("How many votes do you give for Procol Harum?: \n")
+
+    error = True
+    while error:
+        procol_harum = input("How many votes do you give for Procol Harum?: \n")
+        error = check_input_range_and_integer(procol_harum)
     q1.append(procol_harum)
-    moody = input("How many votes do you give for the Moody Blues?: \n")
+
+    error = True
+    while error:
+        moody = input("How many votes do you give for the Moody Blues?: \n")
+        error = check_input_range_and_integer(moody)
     q1.append(moody)
-    graaf = input("How many votes do you give for Van Der Graaf Generator?: \n")
+
+    error = True
+    while error:
+        graaf = input("How many votes do you give for Van Der Graaf Generator?: \n")
+        error = check_input_range_and_integer(graaf)
     q1.append(graaf)
+
+
     return q1
 
 
