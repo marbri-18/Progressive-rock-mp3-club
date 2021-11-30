@@ -70,12 +70,17 @@ print("The Moody Blues")
 print("Van Der Graaf Generator \n")
 
 def check_input_range_and_integer(num):
-    if int(num) >= 1 and int(num) <= 6:
-        return False
+    if num:
+        if int(num) >= 1 and int(num) <= 6:
+            return False
+        else:
+            print(f"You have entered {num}. You must enter either a whole number between 1 and 6 for this answer.")
+            return True
     else:
-        print(f"You have entered {num}. You must enter either a whole number between 1 and 6 for this answer.")
+        print("You have not entered a number for this question. This question must be answered with a number between 1 and 6.")
         return True
 
+        
 def get_q1_input():
     q1 = []
     error = True
@@ -83,6 +88,7 @@ def get_q1_input():
         beatles = input("How many votes do you give for the Beatles?: \n")
         error = check_input_range_and_integer(beatles)
     q1.append(beatles)
+
     pretty_things = input("How many votes do you give for the Pretty Things?: \n")
     q1.append(pretty_things)
     nice = input("How many votes do you give for the Nice?: \n")
