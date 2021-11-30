@@ -78,6 +78,12 @@ def check_if_duplicates(input):
         print("Each number entered must be a unique number between 1 and 6. Please try again")
         return True
 
+def survey_question(band_name):
+    error = True
+    while error:
+        score = input(f"How many votes do you give for {band_name}?: \n")
+        error = check_input_range_and_integer(score)
+    return score
 
 
 print("\n")
@@ -99,49 +105,28 @@ def get_q1_input():
         print("Question 1: Proto-Prog rock")
         print("For the bands in the Proto-Prog group which comprises of:")
         print("The Beatles")
+        print("Pink Floyd \n")
         print("The Pretty Things")
         print("The Nice")
         print("Procol Harum")
         print("The Moody Blues")
-        print("Van Der Graaf Generator \n")
+        
 
         
         q1 = []
-        error = True
-        while error:
-            beatles = input("How many votes do you give for the Beatles?: \n")
-            error = check_input_range_and_integer(beatles)
-        q1.append(beatles)
-
-        error = True
-        while error:
-            pretty_things = input("How many votes do you give for the Pretty Things?: \n")
-            error = check_input_range_and_integer(pretty_things)
-        q1.append(pretty_things)
-
-        error = True
-        while error:
-            nice = input("How many votes do you give for the Nice?: \n")
-            error = check_input_range_and_integer(nice)
-        q1.append(nice)
-
-        error = True
-        while error:
-            procol_harum = input("How many votes do you give for Procol Harum?: \n")
-            error = check_input_range_and_integer(procol_harum)
-        q1.append(procol_harum)
-
-        error = True
-        while error:
-            moody = input("How many votes do you give for the Moody Blues?: \n")
-            error = check_input_range_and_integer(moody)
-        q1.append(moody)
-
-        error = True
-        while error:
-            graaf = input("How many votes do you give for Van Der Graaf Generator?: \n")
-            error = check_input_range_and_integer(graaf)
-        q1.append(graaf)
+        score = survey_question("The Beatles")  
+        q1.append(score)
+        score = survey_question("Pink Floyd")  
+        q1.append(score)
+        score = survey_question("The Pretty Things")  
+        q1.append(score)
+        score = survey_question("The Nice")  
+        q1.append(score)
+        score = survey_question("Procol Harum")  
+        q1.append(score)
+        score = survey_question("The Moody Blues")  
+        q1.append(score)
+        
 
         error_q1 = check_if_duplicates(q1)
     return q1
@@ -174,44 +159,20 @@ def get_q2_input():
         print("Hawkwind")
         print("Rush")
         print("King Crimson \n")
+        q2 = []        
+        score = survey_question("Pink Floyd")  
+        q2.append(score)
+        score = survey_question("Genesis")  
+        q2.append(score)
+        score = survey_question("Yes")  
+        q2.append(score)
+        score = survey_question("Hawkwind")  
+        q2.append(score)
+        score = survey_question("Rush")  
+        q2.append(score)
+        score = survey_question("King Crimson")  
+        q2.append(score)
 
-        
-        q2 = []
-        error = True
-        while error:
-            floyd = input("How many votes do you give for Pink Floyd?: \n")
-            error = check_input_range_and_integer(floyd)
-        q2.append(floyd)
-
-        error = True
-        while error:
-            genesis = input("How many votes do you give for Genesis?: \n")
-            error = check_input_range_and_integer(genesis)
-        q2.append(genesis)
-
-        error = True
-        while error:
-            yes = input("How many votes do you give for Yes?: \n")
-            error = check_input_range_and_integer(yes)
-        q2.append(yes)
-
-        error = True
-        while error:
-            hawkwind = input("How many votes do you give for Hawkwind?: \n")
-            error = check_input_range_and_integer(hawkwind)
-        q2.append(hawkwind)
-
-        error = True
-        while error:
-            rush = input("How many votes do you give for Rush?: \n")
-            error = check_input_range_and_integer(rush)
-        q2.append(rush)
-
-        error = True
-        while error:
-            crimson = input("How many votes do you give for King Crimson?: \n")
-            error = check_input_range_and_integer(crimson)
-        q2.append(crimson)
 
         error_q2 = check_if_duplicates(q2)
     return q2
