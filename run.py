@@ -69,10 +69,19 @@ print("Procol Harum")
 print("The Moody Blues")
 print("Van Der Graaf Generator \n")
 
+def check_input_range_and_integer(num):
+    if int(num) >= 1 and int(num) <= 6:
+        return False
+    else:
+        print(f"You have entered {num}. You must enter either a whole number between 1 and 6 for this answer.")
+        return True
 
 def get_q1_input():
     q1 = []
-    beatles = input("How many votes do you give for the Beatles?: \n")
+    error = True
+    while error:
+        beatles = input("How many votes do you give for the Beatles?: \n")
+        error = check_input_range_and_integer(beatles)
     q1.append(beatles)
     pretty_things = input("How many votes do you give for the Pretty Things?: \n")
     q1.append(pretty_things)
@@ -90,13 +99,12 @@ def get_q1_input():
 q1_response = get_q1_input()
 print(q1_response)
 
+
+
+
+
 """
 
-
-
-
-
-# validate q1 input
 print("For the bands in the Classic-Prog group which comprises of:")
 print("Pink Floyd")
 print("Genesis")
