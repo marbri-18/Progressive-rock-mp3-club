@@ -78,7 +78,7 @@ def check_input_range_and_integer(num):
         print("Answer must be a whole number between 1 and 6")
         return True
     if num:
-        if int(num) >= 1 and int(num) <= 6:
+        if int(num) > 0 and int(num) <= 6:
             return False
         else:
             print(f"You have entered {num}. You must enter either a whole number between 1 and 6 for this answer.")
