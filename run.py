@@ -57,7 +57,7 @@ def update_worksheet(worksheet):
 
 
 
-""" def get_name():
+def get_name():
     Gets name input from user
     validates that user has input a name of three characters or more.
     if valid sends request to user to complete survey.
@@ -72,7 +72,9 @@ def update_worksheet(worksheet):
     print(f"Welcome {name}, \n Please complete our quick survey")
     print("So we can provide you with recommendations for music you will love")
 
-get_name()
+
+
+"""
 
 def check_input_range_and_integer(num):
     
@@ -287,5 +289,6 @@ def main():
     update_worksheet("Classic-Prog")
     update_worksheet("Neo-Prog")
     update_worksheet("Contemporary-Prog")
+    get_name()
 
 main()
