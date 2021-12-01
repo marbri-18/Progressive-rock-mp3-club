@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
+import random
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -29,14 +30,35 @@ print("******************************************************************")
 print("*            Welcome to the Progressive Rock mp3 club           *")
 print("******************************************************************\n \n")
 
-
-
-def get_name():
+def generate_starting_worksheet_values():
     """
+    generates and returns six random numbers in a list.
+    returned list to be used for simulated starting accumulated survey values. 
+    """
+    i = 0
+    start_list = []
+    while i < 6:
+        value = (random.randint(10,30))
+        start_list.append(value)
+        i += 1
+    return (start_list)
+proto_prog_start_values = generate_starting_worksheet_values()
+print(proto_prog_start_values)
+
+def update_worksheet(data, worksheet):
+    """
+    appends data row to worksheet specified in arguments.
+    """
+    target_worksheet = SHEET.worksheet(worksheet)
+    target_worksheet.append_row(data)
+update_worksheet(proto_prog_start_values, "Proto-Prog")
+
+
+
+""" def get_name():
     Gets name input from user
     validates that user has input a name of three characters or more.
     if valid sends request to user to complete survey.
-    """
     error = True
     while error:
         name = input("Please enter your first name \n")
@@ -51,8 +73,7 @@ def get_name():
 get_name()
 
 def check_input_range_and_integer(num):
-    """
-    """
+    
     try:
         int(num)
     except ValueError:
@@ -69,9 +90,7 @@ def check_input_range_and_integer(num):
         return True
 
 def check_if_duplicates(input):
-    """
     
-    """
     if len(input) == len(set(input)):
         return False
     else:
@@ -94,10 +113,11 @@ print("until you get to 1 point for your least favourite band.")
 print("Please note, you must give a different value for each band and you must give a score for every band.")
 print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
 print("\n -------------------------------------------------------\n")
-def get_q1_input():
-    """
 
-    """
+
+
+def get_q1_input():
+    
     q1 = []
     error_q1 = True
     while error_q1:
@@ -137,7 +157,7 @@ q1_response = get_q1_input()
 print(q1_response)
 print("\n -------------------------------------------------------\n")
     
-    
+     
     
 
 
@@ -145,9 +165,7 @@ print("\n -------------------------------------------------------\n")
 
 
 def get_q2_input():
-    """
-
-    """
+    
     q2 = []
     error_q2 = True
     while error_q2:
@@ -182,9 +200,7 @@ print(q2_response)
 print("\n -------------------------------------------------------\n")
 
 def get_q3_input():
-    """
-
-    """
+    
     q3 = []
     error_q3 = True
     while error_q3:
@@ -222,9 +238,7 @@ print("\n -------------------------------------------------------\n")
 
 
 def get_q4_input():
-    """
-
-    """
+    
     q4 = []
     error_q4 = True
     while error_q4:
@@ -258,3 +272,8 @@ q4_response = get_q4_input()
 print(q4_response)
 
 print("http://www.progarchives.com/album.asp?id=1825")
+
+ """
+
+
+
