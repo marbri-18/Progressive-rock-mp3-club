@@ -44,13 +44,16 @@ def generate_starting_worksheet_values():
     return (start_list)
 
 
-def update_worksheet(data, worksheet):
+def update_worksheet(worksheet):
     """
+    calls generate_starting_worksheet_values to provide initial 
+    simulated data for worksheet.
     appends data row to worksheet specified in arguments.
     """
+    data = generate_starting_worksheet_values()
     target_worksheet = SHEET.worksheet(worksheet)
     target_worksheet.append_row(data)
-update_worksheet(proto_prog_start_values, "Proto-Prog")
+
 
 
 
@@ -278,11 +281,11 @@ def main():
     """
     function to call page functions in correct sequence.
     """
-    proto_prog_start_values = generate_starting_worksheet_values()
-    print(proto_prog_start_values)
-    classic_prog_start_values = generate_starting_worksheet_values()
-    print(classic_prog_start_values)
-    neo_prog_start_values = generate_starting_worksheet_values()
-    print(neo_prog_start_values)
-    contemporary_prog_start_values = generate_starting_worksheet_values()
-    print(contempoary_prog_start_values)
+    
+    
+    update_worksheet("Proto-Prog")
+    update_worksheet("Classic-Prog")
+    update_worksheet("Neo-Prog")
+    update_worksheet("Contemporary-Prog")
+
+main()
