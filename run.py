@@ -42,8 +42,7 @@ def generate_starting_worksheet_values():
         start_list.append(value)
         i += 1
     return (start_list)
-proto_prog_start_values = generate_starting_worksheet_values()
-print(proto_prog_start_values)
+
 
 def update_worksheet(data, worksheet):
     """
@@ -275,5 +274,15 @@ print("http://www.progarchives.com/album.asp?id=1825")
 
  """
 
-
-
+def main():
+    """
+    function to call page functions in correct sequence.
+    """
+    proto_prog_start_values = generate_starting_worksheet_values()
+    print(proto_prog_start_values)
+    classic_prog_start_values = generate_starting_worksheet_values()
+    print(classic_prog_start_values)
+    neo_prog_start_values = generate_starting_worksheet_values()
+    print(neo_prog_start_values)
+    contemporary_prog_start_values = generate_starting_worksheet_values()
+    print(contempoary_prog_start_values)
