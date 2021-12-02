@@ -58,9 +58,11 @@ def update_worksheet(worksheet):
 
 
 def get_name():
+    """
     Gets name input from user
     validates that user has input a name of three characters or more.
     if valid sends request to user to complete survey.
+    """
     error = True
     while error:
         name = input("Please enter your first name \n")
@@ -73,11 +75,10 @@ def get_name():
     print("So we can provide you with recommendations for music you will love")
 
 
-
-"""
-
 def check_input_range_and_integer(num):
+    """
     
+    """
     try:
         int(num)
     except ValueError:
@@ -92,6 +93,22 @@ def check_input_range_and_integer(num):
     else:
         print("You have not entered a number for this question. This question must be answered with a number between 1 and 6.")
         return True
+
+def print_instructions()
+    """
+    Prints instructions to the user on completing the prog- rock survey
+    """
+    print("\n")
+    print("In the following 4 questions please rate your favourite bands from top to bottom.")
+    print("Give six points to your favourite band in the list, ")
+    print("five points for your second favourite and so on ,")
+    print("until you get to 1 point for your least favourite band.")
+    print("Please note, you must give a different value for each band and you must give a score for every band.")
+    print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
+    print("\n -------------------------------------------------------\n")
+
+
+        """
 
 def check_if_duplicates(input):
     
@@ -109,14 +126,6 @@ def survey_question(band_name):
     return score
 
 
-print("\n")
-print("In the following 4 questions please rate your favourite bands from top to bottom.")
-print("Give six points to your favourite band in the list, ")
-print("five points for your second favourite and so on ,")
-print("until you get to 1 point for your least favourite band.")
-print("Please note, you must give a different value for each band and you must give a score for every band.")
-print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
-print("\n -------------------------------------------------------\n")
 
 
 
