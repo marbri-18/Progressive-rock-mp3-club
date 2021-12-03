@@ -186,6 +186,15 @@ def calculate_total_survey(worksheet, data):
         result_data.append(result)
     return result_data
 
+def update_worksheet(worksheet, data):
+    """
+    appends update accumulated data row to worksheet specified in arguments.
+    """
+    target_worksheet = SHEET.worksheet(worksheet)
+    target_worksheet.append_row(data)
+
+
+
 def main():
     """
     function to call page functions in correct sequence.
@@ -200,14 +209,21 @@ def main():
     print(q1_response)
     updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
     print(updated_proto_prog)
+    update_worksheet("Proto-Prog", updated_proto_prog)
+
+
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
     print(q2_response)
     updated_classic_prog = calculate_total_survey("Classic-Prog", q2_response)
     print(updated_classic_prog)
+
+
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
     print(q3_response)
     updated_neo_prog = calculate_total_survey("Neo-Prog", q3_response)
     print(updated_neo_prog)
+
+    
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Mostly Autumn", "Dream Theater", "Radiohead")   
     print(q4_response)
     updated_contemporary_prog = calculate_total_survey("Contemporary-Prog", q4_response)
