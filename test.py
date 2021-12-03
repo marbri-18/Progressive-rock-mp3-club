@@ -45,10 +45,10 @@ update_worksheet(new_accum_proto_prog, "Proto-Prog")
 #TESTED WORKING """
 # 
 
-def generate_starting_worksheet_values():
+""" def generate_starting_worksheet_values():
     """
-    generates and returns six random numbers in a list.
-    returned list to be used for simulated starting accumulated survey values. 
+    #generates and returns six random numbers in a list.
+    #returned list to be used for simulated starting accumulated survey values. 
     """
     i = 0
     start_list = []
@@ -62,9 +62,53 @@ print(proto_prog_start_values)
 
 def update_worksheet(data, worksheet):
     """
-    appends data row to worksheet specified in arguments.
+    #appends data row to worksheet specified in arguments.
     """
     target_worksheet = SHEET.worksheet(worksheet)
     target_worksheet.append_row(data)
 update_worksheet(proto_prog_start_values, "Proto-Prog")
-#TESTED WORKING
+#TESTED WORKING """
+
+def get_q1_input(num):
+question_num = "question" + num
+print(question_num)
+error_question_num = "error_question_num" + num
+print(error_question_num)
+
+
+
+question_num = []
+error_question_num = True
+#while error_question_num:
+    #print(error_question_num)
+
+""" print("Question 1: Proto-Prog rock")
+print("For the bands in the Proto-Prog group which comprises of:")
+print("The Beatles")
+print("Pink Floyd \n")
+print("The Pretty Things")
+print("The Nice")
+print("Procol Harum")
+print("The Moody Blues")
+
+q1 = []
+score = survey_question("The Beatles")  
+q1.append(score)
+score = survey_question("Pink Floyd")  
+q1.append(score)
+score = survey_question("The Pretty Things")  
+q1.append(score)
+score = survey_question("The Nice")  
+q1.append(score)
+score = survey_question("Procol Harum")  
+q1.append(score)
+score = survey_question("The Moody Blues")  
+q1.append(score)
+
+error_q1 = check_if_duplicates(q1)
+return q1
+
+q1_response = get_q1_input()   
+print(q1_response)
+print("\n -------------------------------------------------------\n")
+ """

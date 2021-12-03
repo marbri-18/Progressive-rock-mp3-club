@@ -61,7 +61,8 @@ def get_name():
     """
     Gets name input from user
     validates that user has input a name of three characters or more.
-    if valid sends request to user to complete survey.
+    if not valid reports error to use and repeats request.
+    if valid welcomes the user and sends request to user to complete survey.
     """
     error = True
     while error:
@@ -71,14 +72,35 @@ def get_name():
             error = True
         else:
             error = False
-    print(f"Welcome {name}, \n Please complete our quick survey")
+    print("\n______________________________________________________________________________________\n")
+    print(f"Welcome {name}, \nPlease complete our quick survey")
     print("So we can provide you with recommendations for music you will love")
+    print("\n")
 
 
-def check_input_range_and_integer(num):
+
+
+def print_instructions():
+    """
+    Prints welcome and instructions to the user on completing the prog- rock survey
     """
     
-    """
+    print("In the following 4 questions please rate your favourite bands from top to bottom.")
+    print("Give six points to your favourite band in the list, ")
+    print("five points for your second favourite and so on ,")
+    print("until you get to 1 point for your least favourite band.")
+    print("Please note, you must give a different value for each band and you must give a score for every band.")
+    print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
+    print("\n -------------------------------------------------------\n")
+
+def survey_question(band_name):
+    error = True
+    while error:
+        score = input(f"How many votes do you give for {band_name}?: \n")
+        error = check_input_range_and_integer(score)
+    return score
+
+def check_input_range_and_integer(num):
     try:
         int(num)
     except ValueError:
@@ -94,199 +116,224 @@ def check_input_range_and_integer(num):
         print("You have not entered a number for this question. This question must be answered with a number between 1 and 6.")
         return True
 
-def print_instructions()
-    """
-    Prints instructions to the user on completing the prog- rock survey
-    """
-    print("\n")
-    print("In the following 4 questions please rate your favourite bands from top to bottom.")
-    print("Give six points to your favourite band in the list, ")
-    print("five points for your second favourite and so on ,")
-    print("until you get to 1 point for your least favourite band.")
-    print("Please note, you must give a different value for each band and you must give a score for every band.")
-    print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
-    print("\n -------------------------------------------------------\n")
-
-
-        """
-
 def check_if_duplicates(input):
-    
+
     if len(input) == len(set(input)):
         return False
     else:
         print("Each number entered must be a unique number between 1 and 6. Please try again")
         return True
 
+
+def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
+
+    data = []
+    error_data = True
+    while error_data:
+
+        print(f"Question {qnum}: {genre}")
+        print(f"For the bands in the {genre} category which comprises of:")
+        print(f"{band1}")
+        print(f"{band2}")
+        print(f"{band3}")
+        print(f"{band4}")
+        print(f"{band5}")
+        print(f"{band6}")
+
+        score = survey_question(f"{band1}")  
+        data.append(score)
+        score = survey_question(f"{band2}")  
+        data.append(score)
+        score = survey_question(f"{band3}")  
+        data.append(score)
+        score = survey_question(f"{band4}")  
+        data.append(score)
+        score = survey_question(f"{band5}")  
+        data.append(score)
+        score = survey_question(f"{band6}")  
+        data.append(score)
+
+        error_data = check_if_duplicates(data)
+    return data
+
+
+
+
+"""
+def check_input_range_and_integer(num):
+try:
+int(num)
+except ValueError:
+print("Answer must be a whole number between 1 and 6")
+return True
+if num:
+if int(num) > 0 and int(num) <= 6:
+return False
+else:
+print(f"You have entered {num}. You must enter either a whole number between 1 and 6 for this answer.")
+return True
+else:
+print("You have not entered a number for this question. This question must be answered with a number between 1 and 6.")
+return True
+
+def check_if_duplicates(input):
+
+if len(input) == len(set(input)):
+return False
+else:
+print("Each number entered must be a unique number between 1 and 6. Please try again")
+return True
+
 def survey_question(band_name):
-    error = True
-    while error:
-        score = input(f"How many votes do you give for {band_name}?: \n")
-        error = check_input_range_and_integer(score)
-    return score
-
-
-
-
+error = True
+while error:
+score = input(f"How many votes do you give for {band_name}?: \n")
+error = check_input_range_and_integer(score)
+return score
 
 def get_q1_input():
-    
-    q1 = []
-    error_q1 = True
-    while error_q1:
 
-        print("Question 1: Proto-Prog rock")
-        print("For the bands in the Proto-Prog group which comprises of:")
-        print("The Beatles")
-        print("Pink Floyd \n")
-        print("The Pretty Things")
-        print("The Nice")
-        print("Procol Harum")
-        print("The Moody Blues")
-        
+q1 = []
+error_q1 = True
+while error_q1:
 
-        
-        q1 = []
-        score = survey_question("The Beatles")  
-        q1.append(score)
-        score = survey_question("Pink Floyd")  
-        q1.append(score)
-        score = survey_question("The Pretty Things")  
-        q1.append(score)
-        score = survey_question("The Nice")  
-        q1.append(score)
-        score = survey_question("Procol Harum")  
-        q1.append(score)
-        score = survey_question("The Moody Blues")  
-        q1.append(score)
-        
+print("Question 1: Proto-Prog rock")
+print("For the bands in the Proto-Prog group which comprises of:")
+print("The Beatles")
+print("Pink Floyd \n")
+print("The Pretty Things")
+print("The Nice")
+print("Procol Harum")
+print("The Moody Blues")
 
-        error_q1 = check_if_duplicates(q1)
-    return q1
-    
-    
-    
+q1 = []
+score = survey_question("The Beatles")  
+q1.append(score)
+score = survey_question("Pink Floyd")  
+q1.append(score)
+score = survey_question("The Pretty Things")  
+q1.append(score)
+score = survey_question("The Nice")  
+q1.append(score)
+score = survey_question("Procol Harum")  
+q1.append(score)
+score = survey_question("The Moody Blues")  
+q1.append(score)
+
+error_q1 = check_if_duplicates(q1)
+return q1
+
 q1_response = get_q1_input()   
 print(q1_response)
 print("\n -------------------------------------------------------\n")
-    
-     
-    
-
-
-
-
 
 def get_q2_input():
-    
-    q2 = []
-    error_q2 = True
-    while error_q2:
-        print("Question 2: Classic Progressive rock")
-        print("For the bands in the Classic-Prog group which comprises of:")
-        print("Pink Floyd")
-        print("Genesis")
-        print("Yes")
-        print("Hawkwind")
-        print("Rush")
-        print("King Crimson \n")
-        q2 = []        
-        score = survey_question("Pink Floyd")  
-        q2.append(score)
-        score = survey_question("Genesis")  
-        q2.append(score)
-        score = survey_question("Yes")  
-        q2.append(score)
-        score = survey_question("Hawkwind")  
-        q2.append(score)
-        score = survey_question("Rush")  
-        q2.append(score)
-        score = survey_question("King Crimson")  
-        q2.append(score)
+
+q2 = []
+error_q2 = True
+while error_q2:
+print("Question 2: Classic Progressive rock")
+print("For the bands in the Classic-Prog group which comprises of:")
+print("Pink Floyd")
+print("Genesis")
+print("Yes")
+print("Hawkwind")
+print("Rush")
+print("King Crimson \n")
+q2 = []        
+score = survey_question("Pink Floyd")  
+q2.append(score)
+score = survey_question("Genesis")  
+q2.append(score)
+score = survey_question("Yes")  
+q2.append(score)
+score = survey_question("Hawkwind")  
+q2.append(score)
+score = survey_question("Rush")  
+q2.append(score)
+score = survey_question("King Crimson")  
+q2.append(score)
 
 
-        error_q2 = check_if_duplicates(q2)
-    return q2
-    
+error_q2 = check_if_duplicates(q2)
+return q2
+
 q2_response = get_q2_input()   
 print(q2_response)
 print("\n -------------------------------------------------------\n")
 
 def get_q3_input():
-    
-    q3 = []
-    error_q3 = True
-    while error_q3:
-        print("Question 3: Neo-Progressive Rock")
-        print("For the bands in the Neo-Prog group which comprises of:")
-        print("Twelfth Night")
-        print("Marillion")
-        print("IQ")
-        print("Pallas")
-        print("Pendragon")
-        print("Solstice \n")
-        q3 = []        
-        score = survey_question("Twelfth Night")  
-        q3.append(score)
-        score = survey_question("Marillion")  
-        q3.append(score)
-        score = survey_question("IQ")  
-        q3.append(score)
-        score = survey_question("Pallas")  
-        q3.append(score)
-        score = survey_question("Pendragon")  
-        q3.append(score)
-        score = survey_question("Solstice")  
-        q3.append(score)
+
+q3 = []
+error_q3 = True
+while error_q3:
+print("Question 3: Neo-Progressive Rock")
+print("For the bands in the Neo-Prog group which comprises of:")
+print("Twelfth Night")
+print("Marillion")
+print("IQ")
+print("Pallas")
+print("Pendragon")
+print("Solstice \n")
+q3 = []        
+score = survey_question("Twelfth Night")  
+q3.append(score)
+score = survey_question("Marillion")  
+q3.append(score)
+score = survey_question("IQ")  
+q3.append(score)
+score = survey_question("Pallas")  
+q3.append(score)
+score = survey_question("Pendragon")  
+q3.append(score)
+score = survey_question("Solstice")  
+q3.append(score)
 
 
-        error_q3 = check_if_duplicates(q3)
-    return q3
+error_q3 = check_if_duplicates(q3)
+return q3
 
 q3_response = get_q3_input()   
 print(q3_response)
 print("\n -------------------------------------------------------\n")   
 
-
-
-
 def get_q4_input():
-    
-    q4 = []
-    error_q4 = True
-    while error_q4:
-        print("Question 4: Contemporary Progressive Rock")
-        print("For the bands in the Contemporary-Prog group which comprises of:")
-        print("The Flower Kings")
-        print("The Tangent")
-        print("Porcupine Tree")
-        print("Mostly Autumn")
-        print("Dream Theatre")
-        print("Radiohead \n")
-        q4 = []        
-        score = survey_question("The Flower Kings")  
-        q4.append(score)
-        score = survey_question("The Tangent")  
-        q4.append(score)
-        score = survey_question("Porcupine Tree")  
-        q4.append(score)
-        score = survey_question("Mostly Autumn")  
-        q4.append(score)
-        score = survey_question("Dream Theatre")  
-        q4.append(score)
-        score = survey_question("Radiohead")  
-        q4.append(score)
+
+q4 = []
+error_q4 = True
+while error_q4:
+print("Question 4: Contemporary Progressive Rock")
+print("For the bands in the Contemporary-Prog group which comprises of:")
+print("The Flower Kings")
+print("The Tangent")
+print("Porcupine Tree")
+print("Mostly Autumn")
+print("Dream Theatre")
+print("Radiohead \n")
+q4 = []        
+score = survey_question("The Flower Kings")  
+q4.append(score)
+score = survey_question("The Tangent")  
+q4.append(score)
+score = survey_question("Porcupine Tree")  
+q4.append(score)
+score = survey_question("Mostly Autumn")  
+q4.append(score)
+score = survey_question("Dream Theatre")  
+q4.append(score)
+score = survey_question("Radiohead")  
+q4.append(score)
 
 
-        error_q4 = check_if_duplicates(q4)
-    return q4
-    
+error_q4 = check_if_duplicates(q4)
+return q4
+
 q4_response = get_q4_input()   
 print(q4_response)
 
 print("http://www.progarchives.com/album.asp?id=1825")
 
- """
+"""
 
 def main():
     """
@@ -299,5 +346,8 @@ def main():
     update_worksheet("Neo-Prog")
     update_worksheet("Contemporary-Prog")
     get_name()
+    print_instructions()
+    q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
+    print(q1_response)
 
 main()
