@@ -177,6 +177,14 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
         error_data = check_if_duplicates(data)
     return data
 
+def update_worksheet(data, worksheet):
+    """
+    Takes user input data as first argument.
+    Appends data row to worksheet specified in second argument.
+    """
+    target_worksheet = SHEET.worksheet(worksheet)
+    target_worksheet.append_row(data)
+
 def main():
     """
     function to call page functions in correct sequence.
@@ -189,5 +197,10 @@ def main():
     print_instructions()
     q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
     print(q1_response)
-
+    q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
+    print(q2_response)
+    q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
+    print(q3_response)
+    q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Mostly Autumn", "Dream Theater", "Radiohead")   
+    print(q4_response)
 main()
