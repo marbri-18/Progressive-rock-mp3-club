@@ -177,13 +177,14 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
         error_data = check_if_duplicates(data)
     return data
 
-def update_worksheet(data, worksheet):
-    """
-    Takes user input data as first argument.
-    Appends data row to worksheet specified in second argument.
-    """
-    target_worksheet = SHEET.worksheet(worksheet)
-    target_worksheet.append_row(data)
+def calculate_total_survey(worksheet, data):
+    start_data = SHEET.worksheet(worksheet).get_all_values()
+    start_data_row = start_data[-1]
+    result_data = []
+    for prev, add in zip(start_data_row, data):
+        result = int(prev) + int(add)
+        result_data.append(result)
+    return result_data
 
 def main():
     """
@@ -203,4 +204,6 @@ def main():
     print(q3_response)
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Mostly Autumn", "Dream Theater", "Radiohead")   
     print(q4_response)
+    updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
+    print(updated_proto_prog)
 main()
