@@ -193,7 +193,25 @@ def update_worksheet(worksheet, data):
     target_worksheet = SHEET.worksheet(worksheet)
     target_worksheet.append_row(data)
 
-
+def get_user_input_recommendations(worksheet, data):
+    """
+    Takes worksheet (genre) and data (user responses for each genre) as arguments.
+    finds highest value from user responses list.
+    from highest value, finds corresponding worksheet column.
+    generates random number to determine row to select from column.
+    appends heading row value (band name) from selected column to response list.
+    appends row value (album title) matching random number from selected column to response list.
+    returns response list as recommended album from genre.
+    """
+    highest_value = data.index(max(data))
+    worksheet_col = highest_value + 1
+    worksheet_row = value = (random.randint(1,5))
+    response = []
+    target_sheet = SHEET.worksheet(worksheet)
+    column = target_sheet.col_values(worksheet_col)
+    response.append(column[0])
+    response.append(column[worksheet_row])
+    return response
 
 def main():
     """
@@ -216,16 +234,20 @@ def main():
     print(q2_response)
     updated_classic_prog = calculate_total_survey("Classic-Prog", q2_response)
     print(updated_classic_prog)
-
+    update_worksheet("Classic-Prog", updated_classic_prog)
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
     print(q3_response)
     updated_neo_prog = calculate_total_survey("Neo-Prog", q3_response)
     print(updated_neo_prog)
+    update_worksheet("Neo-Prog", updated_neo_prog)
 
-    
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Mostly Autumn", "Dream Theater", "Radiohead")   
     print(q4_response)
     updated_contemporary_prog = calculate_total_survey("Contemporary-Prog", q4_response)
     print(updated_contemporary_prog)
+    update_worksheet("Contemporary-Prog", updated_contemporary_prog)
+
+    q1_recommendations = get_user_input_recommendations("Proto-Prog", q1_response)
+    print(q1_recommendations)
 main()
