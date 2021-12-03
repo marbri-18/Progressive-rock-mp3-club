@@ -44,7 +44,7 @@ def generate_starting_worksheet_values():
     return (start_list)
 
 
-def update_worksheet(worksheet):
+def initiate_worksheet(worksheet):
     """
     calls generate_starting_worksheet_values to provide initial 
     simulated data for worksheet.
@@ -181,10 +181,10 @@ def main():
     """
     function to call page functions in correct sequence.
     """
-    update_worksheet("Proto-Prog")
-    update_worksheet("Classic-Prog")
-    update_worksheet("Neo-Prog")
-    update_worksheet("Contemporary-Prog")
+    initiate_worksheet("Proto-Prog")
+    initiate_worksheet("Classic-Prog")
+    initiate_worksheet("Neo-Prog")
+    initiate_worksheet("Contemporary-Prog")
     get_name()
     print_instructions()
     q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
