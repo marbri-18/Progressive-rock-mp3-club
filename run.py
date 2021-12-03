@@ -94,6 +94,12 @@ def print_instructions():
     print("\n -------------------------------------------------------\n")
 
 def survey_question(band_name):
+    """
+    Prints rate band question to user.
+    calls check input range and integer function and recieves results.
+    if results valid returns user score to get question input function.
+    if results not valid repeats question.
+    """
     error = True
     while error:
         score = input(f"How many votes do you give for {band_name}?: \n")
@@ -101,6 +107,11 @@ def survey_question(band_name):
     return score
 
 def check_input_range_and_integer(num):
+    """
+    checks user input is integer and between 1 and 6.
+    if input not valid prints error message to user and returns error - true to survey question function.
+    if input valid returns false to survey question function.
+    """
     try:
         int(num)
     except ValueError:
@@ -117,6 +128,11 @@ def check_input_range_and_integer(num):
         return True
 
 def check_if_duplicates(input):
+    """ 
+    checks complete question (genre) data input by user for duplicate values.
+    if data valid returns error = false to get get question input function.
+    if data not valid prints error message to user and returns error = true to get question input function.
+    """
 
     if len(input) == len(set(input)):
         return False
@@ -126,7 +142,12 @@ def check_if_duplicates(input):
 
 
 def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
-
+    """
+    Print rate bands list to user.
+    call survey questions fuction and recieve back results.
+    call check if duplicates function - if results valid return result.
+    Otherwise repeat question from beginning.
+    """
     data = []
     error_data = True
     while error_data:
@@ -156,191 +177,10 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
         error_data = check_if_duplicates(data)
     return data
 
-
-
-
-"""
-def check_input_range_and_integer(num):
-try:
-int(num)
-except ValueError:
-print("Answer must be a whole number between 1 and 6")
-return True
-if num:
-if int(num) > 0 and int(num) <= 6:
-return False
-else:
-print(f"You have entered {num}. You must enter either a whole number between 1 and 6 for this answer.")
-return True
-else:
-print("You have not entered a number for this question. This question must be answered with a number between 1 and 6.")
-return True
-
-def check_if_duplicates(input):
-
-if len(input) == len(set(input)):
-return False
-else:
-print("Each number entered must be a unique number between 1 and 6. Please try again")
-return True
-
-def survey_question(band_name):
-error = True
-while error:
-score = input(f"How many votes do you give for {band_name}?: \n")
-error = check_input_range_and_integer(score)
-return score
-
-def get_q1_input():
-
-q1 = []
-error_q1 = True
-while error_q1:
-
-print("Question 1: Proto-Prog rock")
-print("For the bands in the Proto-Prog group which comprises of:")
-print("The Beatles")
-print("Pink Floyd \n")
-print("The Pretty Things")
-print("The Nice")
-print("Procol Harum")
-print("The Moody Blues")
-
-q1 = []
-score = survey_question("The Beatles")  
-q1.append(score)
-score = survey_question("Pink Floyd")  
-q1.append(score)
-score = survey_question("The Pretty Things")  
-q1.append(score)
-score = survey_question("The Nice")  
-q1.append(score)
-score = survey_question("Procol Harum")  
-q1.append(score)
-score = survey_question("The Moody Blues")  
-q1.append(score)
-
-error_q1 = check_if_duplicates(q1)
-return q1
-
-q1_response = get_q1_input()   
-print(q1_response)
-print("\n -------------------------------------------------------\n")
-
-def get_q2_input():
-
-q2 = []
-error_q2 = True
-while error_q2:
-print("Question 2: Classic Progressive rock")
-print("For the bands in the Classic-Prog group which comprises of:")
-print("Pink Floyd")
-print("Genesis")
-print("Yes")
-print("Hawkwind")
-print("Rush")
-print("King Crimson \n")
-q2 = []        
-score = survey_question("Pink Floyd")  
-q2.append(score)
-score = survey_question("Genesis")  
-q2.append(score)
-score = survey_question("Yes")  
-q2.append(score)
-score = survey_question("Hawkwind")  
-q2.append(score)
-score = survey_question("Rush")  
-q2.append(score)
-score = survey_question("King Crimson")  
-q2.append(score)
-
-
-error_q2 = check_if_duplicates(q2)
-return q2
-
-q2_response = get_q2_input()   
-print(q2_response)
-print("\n -------------------------------------------------------\n")
-
-def get_q3_input():
-
-q3 = []
-error_q3 = True
-while error_q3:
-print("Question 3: Neo-Progressive Rock")
-print("For the bands in the Neo-Prog group which comprises of:")
-print("Twelfth Night")
-print("Marillion")
-print("IQ")
-print("Pallas")
-print("Pendragon")
-print("Solstice \n")
-q3 = []        
-score = survey_question("Twelfth Night")  
-q3.append(score)
-score = survey_question("Marillion")  
-q3.append(score)
-score = survey_question("IQ")  
-q3.append(score)
-score = survey_question("Pallas")  
-q3.append(score)
-score = survey_question("Pendragon")  
-q3.append(score)
-score = survey_question("Solstice")  
-q3.append(score)
-
-
-error_q3 = check_if_duplicates(q3)
-return q3
-
-q3_response = get_q3_input()   
-print(q3_response)
-print("\n -------------------------------------------------------\n")   
-
-def get_q4_input():
-
-q4 = []
-error_q4 = True
-while error_q4:
-print("Question 4: Contemporary Progressive Rock")
-print("For the bands in the Contemporary-Prog group which comprises of:")
-print("The Flower Kings")
-print("The Tangent")
-print("Porcupine Tree")
-print("Mostly Autumn")
-print("Dream Theatre")
-print("Radiohead \n")
-q4 = []        
-score = survey_question("The Flower Kings")  
-q4.append(score)
-score = survey_question("The Tangent")  
-q4.append(score)
-score = survey_question("Porcupine Tree")  
-q4.append(score)
-score = survey_question("Mostly Autumn")  
-q4.append(score)
-score = survey_question("Dream Theatre")  
-q4.append(score)
-score = survey_question("Radiohead")  
-q4.append(score)
-
-
-error_q4 = check_if_duplicates(q4)
-return q4
-
-q4_response = get_q4_input()   
-print(q4_response)
-
-print("http://www.progarchives.com/album.asp?id=1825")
-
-"""
-
 def main():
     """
     function to call page functions in correct sequence.
     """
-    
-    
     update_worksheet("Proto-Prog")
     update_worksheet("Classic-Prog")
     update_worksheet("Neo-Prog")
