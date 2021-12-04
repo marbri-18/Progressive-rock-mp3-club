@@ -228,6 +228,8 @@ def main():
     updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
     print(updated_proto_prog)
     update_worksheet("Proto-Prog", updated_proto_prog)
+    q1_recommendations = get_user_input_recommendations("Proto-Prog", q1_response)
+    print(q1_recommendations)
 
 
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
@@ -235,19 +237,24 @@ def main():
     updated_classic_prog = calculate_total_survey("Classic-Prog", q2_response)
     print(updated_classic_prog)
     update_worksheet("Classic-Prog", updated_classic_prog)
+    q2_recommendations = get_user_input_recommendations("Classic-Prog", q2_response)
+    print(q2_recommendations)
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
     print(q3_response)
     updated_neo_prog = calculate_total_survey("Neo-Prog", q3_response)
     print(updated_neo_prog)
     update_worksheet("Neo-Prog", updated_neo_prog)
+    q3_recommendations = get_user_input_recommendations("Neo-Prog", q3_response)
+    print(q3_recommendations)
 
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Mostly Autumn", "Dream Theater", "Radiohead")   
     print(q4_response)
     updated_contemporary_prog = calculate_total_survey("Contemporary-Prog", q4_response)
     print(updated_contemporary_prog)
     update_worksheet("Contemporary-Prog", updated_contemporary_prog)
+    q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
+    print(q4_recommendations)
 
-    q1_recommendations = get_user_input_recommendations("Proto-Prog", q1_response)
-    print(q1_recommendations)
+    
 main()
