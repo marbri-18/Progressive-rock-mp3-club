@@ -215,7 +215,9 @@ def get_user_input_recommendations(worksheet, data):
 
 def get_band_names(worksheet):
     """ 
-    function to get band names from worksheet and return as list.
+    Function called by compile all bands list function.
+    Gets band names from worksheet specified in arguments 
+    and return as list.
     """
     band_data = SHEET.worksheet(worksheet).get_all_values()
     band_data_row = band_data[0]
@@ -223,8 +225,8 @@ def get_band_names(worksheet):
 
 def get_accumulated_survey_data(worksheet):
     """
-    Called by calculate survey data function.
-    gets last row values from worksheet.
+    Function called by calculate survey data function.
+    gets last row values from worksheet specified in arguments.
     returns values to calculate survey data function.
     """     
     survey_data= SHEET.worksheet(worksheet).get_all_values()
@@ -233,7 +235,8 @@ def get_accumulated_survey_data(worksheet):
 
 def compile_all_bands_list():
     """
-    function calls get band names function to get list of bands 
+    Function called by get band of week function.
+    Calls get band names function to get list of bands 
     in each of the four category questions.
     Compiles single list for all bands from four category lists.
     returns single list to get band of week function.
@@ -244,6 +247,22 @@ def compile_all_bands_list():
     band4 = get_band_names("Contemporary-Prog")
     all_bands = band1 + band2 + band3 + band4
     return all_bands
+
+def calculate_survey_data():
+    """
+    function called by get band of week function.
+    Compiles accumulated survey results on last row
+    of worksheet for all four category questions and merge into one list.
+    Calculates highest value and returns index of highest value to get band of week function.
+    """
+    survey1 = get_accumulated_survey_data("Proto-Prog")
+    survey2 = get_accumulated_survey_data("Classic-Prog")
+    survey3 = get_accumulated_survey_data("Neo-Prog")
+    survey4 = get_accumulated_survey_data("Contemporary-Prog")
+    all_surveys = survey1 + survey2 + survey3 + survey4
+    print(all_surveys)
+    highest_value = all_surveys.index(max(all_surveys))
+    return highest_value
 
 def main():
     """
