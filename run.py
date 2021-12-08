@@ -213,6 +213,24 @@ def get_user_input_recommendations(worksheet, data):
     response.append(column[worksheet_row])
     return response
 
+def get_band_names(worksheet):
+    """ 
+    function to get band names from worksheet and return as list.
+    """
+    band_data = SHEET.worksheet(worksheet).get_all_values()
+    band_data_row = band_data[0]
+    return band_data_row
+
+def get_accumulated_survey_data(worksheet):
+    """
+    Called by calculate survey data function.
+    gets last row values from worksheet.
+    returns values to calculate survey data function.
+    """     
+    survey_data= SHEET.worksheet(worksheet).get_all_values()
+    survey_data_row = survey_data[-1]
+    return survey_data_row
+
 def main():
     """
     function to call page functions in correct sequence.
