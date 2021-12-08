@@ -231,6 +231,20 @@ def get_accumulated_survey_data(worksheet):
     survey_data_row = survey_data[-1]
     return survey_data_row
 
+def compile_all_bands_list():
+    """
+    function calls get band names function to get list of bands 
+    in each of the four category questions.
+    Compiles single list for all bands from four category lists.
+    returns single list to get band of week function.
+    """ 
+    band1 = get_band_names("Proto-Prog")
+    band2 = get_band_names("Classic-Prog")
+    band3 = get_band_names("Neo-Prog")
+    band4 = get_band_names("Contemporary-Prog")
+    all_bands = band1 + band2 + band3 + band4
+    return all_bands
+
 def main():
     """
     function to call page functions in correct sequence.

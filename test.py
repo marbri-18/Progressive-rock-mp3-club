@@ -18,17 +18,17 @@ SHEET = GSPREAD_CLIENT.open("progressive rock mp3 club")
     
 
     
-def get_band_names(worksheet):
-    band_data = SHEET.worksheet(worksheet).get_all_values()
-    band_data_row = band_data[0]
-    return band_data_row
-    
-def get_accumulated_survey_data(worksheet):    
-    survey_data= SHEET.worksheet(worksheet).get_all_values()
-    survey_data_row = survey_data[-1]
-    return survey_data_row
 
-def calculate_band_of_week():
+    
+
+
+def compile_all_bands_list():
+    """
+    function calls get band names function to get list of bands 
+    in each of the four category questions.
+    Compiles single list for all bands from four category lists.
+    returns single list to get band of week function.
+    """ 
     band1 = get_band_names("Proto-Prog")
     band2 = get_band_names("Classic-Prog")
     band3 = get_band_names("Neo-Prog")
@@ -48,7 +48,7 @@ def calculate_survey_data():
     return highest_value
 
 def get_band_of_week():
-    all_bands_list = calculate_band_of_week()
+    all_bands_list = compile_all_bands_list()
     print(all_bands_list)
     highest_survey_value_index = calculate_survey_data()
     print(highest_survey_value_index)
