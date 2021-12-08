@@ -264,6 +264,22 @@ def calculate_survey_data():
     highest_value = all_surveys.index(max(all_surveys))
     return highest_value
 
+def get_band_of_week():
+    """
+    Calls and recieves data from all bands list function and
+    calculate survey data function.
+    gets value from all bands list that corresponds to returned calculate survey data index.
+    returns result.
+    """ 
+    all_bands_list = compile_all_bands_list()
+    print(all_bands_list)
+    highest_survey_value_index = calculate_survey_data()
+    print(highest_survey_value_index)
+    band_of_week = all_bands_list[highest_survey_value_index]
+    return band_of_week
+
+
+
 def main():
     """
     function to call page functions in correct sequence.
@@ -306,6 +322,9 @@ def main():
     update_worksheet("Contemporary-Prog", updated_contemporary_prog)
     q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
     print(q4_recommendations)
+
+    band_recommendation = get_band_of_week()
+    print(band_recommendation)
 
     
 main()
