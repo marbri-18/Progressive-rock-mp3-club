@@ -103,6 +103,7 @@ def survey_question(band_name):
     error = True
     while error:
         score = input(f"How many votes do you give for {band_name}?: \n")
+        print("\n")
         error = check_input_range_and_integer(score)
     return score
 
@@ -260,54 +261,10 @@ def calculate_survey_data():
     survey3 = get_accumulated_survey_data("Neo-Prog")
     survey4 = get_accumulated_survey_data("Contemporary-Prog")
     all_surveys = survey1 + survey2 + survey3 + survey4
-    print(all_surveys)
+    #print(all_surveys)
     highest_value = all_surveys.index(max(all_surveys))
     return highest_value
 
-def get_band_of_week():
-    """
-    Calls and recieves data from all bands list function and
-    calculate survey data function.
-    gets value from all bands list that corresponds to returned calculate survey data index.
-    returns result.
-    """ 
-    all_bands_list = compile_all_bands_list()
-    print(all_bands_list)
-    highest_survey_value_index = calculate_survey_data()
-    print(highest_survey_value_index)
-    band_of_week = all_bands_list[highest_survey_value_index]
-    return band_of_week
-
-def compile_all_bands_list():
-    """
-    function calls get band names function to get list of bands 
-    in each of the four category questions.
-    Compiles single list for all bands from four category lists.
-    returns single list to get band of week function.
-    """ 
-    band1 = get_band_names("Proto-Prog")
-    band2 = get_band_names("Classic-Prog")
-    band3 = get_band_names("Neo-Prog")
-    band4 = get_band_names("Contemporary-Prog")
-    all_bands = band1 + band2 + band3 + band4
-    return all_bands
-
-def calculate_survey_data():
-    """
-    function called from get band of week function.
-    Recieves accumulated (last Row) survey results
-    for each band category and compiles data into one list.
-    From compiled list calculates highest value and returns
-    index of highest value to get band of week function.
-    """ 
-    survey1 = get_accumulated_survey_data("Proto-Prog")
-    survey2 = get_accumulated_survey_data("Classic-Prog")
-    survey3 = get_accumulated_survey_data("Neo-Prog")
-    survey4 = get_accumulated_survey_data("Contemporary-Prog")
-    all_surveys = survey1 + survey2 + survey3 + survey4
-    print(all_surveys)
-    highest_value = all_surveys.index(max(all_surveys))
-    return highest_value
 
 def get_band_of_week():
     """
@@ -316,9 +273,9 @@ def get_band_of_week():
     gets band of week from corresponding index in all bands list to index of highest survey value.
     """
     all_bands_list = compile_all_bands_list()
-    print(all_bands_list)
+    #print(all_bands_list)
     highest_survey_value_index = calculate_survey_data()
-    print(highest_survey_value_index)
+    #print(highest_survey_value_index)
     band_of_week = all_bands_list[highest_survey_value_index]
     return band_of_week
 
@@ -384,44 +341,48 @@ def main():
     initiate_worksheet("Contemporary-Prog")
     get_name()
     print_instructions()
+    
     q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
-    print(q1_response)
+    #print(q1_response)
     updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
-    print(updated_proto_prog)
+    #print(updated_proto_prog)
     update_worksheet("Proto-Prog", updated_proto_prog)
     q1_recommendations = get_user_input_recommendations("Proto-Prog", q1_response)
-    print(q1_recommendations)
+    print(f"From your responses in the Proto-progressive rock category, \n we recommend \n'{q1_recommendations[1]}' by '{q1_recommendations[0]}'\n")
 
 
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
-    print(q2_response)
+    #print(q2_response)
     updated_classic_prog = calculate_total_survey("Classic-Prog", q2_response)
-    print(updated_classic_prog)
+    #print(updated_classic_prog)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_recommendations = get_user_input_recommendations("Classic-Prog", q2_response)
-    print(q2_recommendations)
+    
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
-    print(q3_response)
+    #print(q3_response)
     updated_neo_prog = calculate_total_survey("Neo-Prog", q3_response)
-    print(updated_neo_prog)
+    #print(updated_neo_prog)
     update_worksheet("Neo-Prog", updated_neo_prog)
     q3_recommendations = get_user_input_recommendations("Neo-Prog", q3_response)
-    print(q3_recommendations)
-
+    
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Mostly Autumn", "Dream Theater", "Radiohead")   
-    print(q4_response)
+    #print(q4_response)
     updated_contemporary_prog = calculate_total_survey("Contemporary-Prog", q4_response)
-    print(updated_contemporary_prog)
+    #print(updated_contemporary_prog)
     update_worksheet("Contemporary-Prog", updated_contemporary_prog)
     q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
+    
+    print(q1_recommendations)
+    print(q2_recommendations)
+    print(q3_recommendations)
     print(q4_recommendations)
 
     band_recommendation = get_band_of_week()
-    print(band_recommendation)
+    #print(band_recommendation)
 
-    band_recommendation = get_band_of_week()
-    print(band_recommendation)
+    #band_recommendation = get_band_of_week()
+    #print(band_recommendation)
 
     recommendation = get_album_of_week_band_index(band_recommendation)
     print(recommendation)
