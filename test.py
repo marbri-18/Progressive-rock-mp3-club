@@ -22,43 +22,23 @@ SHEET = GSPREAD_CLIENT.open("progressive rock mp3 club")
     
 
 
-def compile_all_bands_list():
-    """
-    function calls get band names function to get list of bands 
-    in each of the four category questions.
-    Compiles single list for all bands from four category lists.
-    returns single list to get band of week function.
-    """ 
-    band1 = get_band_names("Proto-Prog")
-    band2 = get_band_names("Classic-Prog")
-    band3 = get_band_names("Neo-Prog")
-    band4 = get_band_names("Contemporary-Prog")
-    all_bands = band1 + band2 + band3 + band4
-    return all_bands
 
 
-def calculate_survey_data():
-    survey1 = get_accumulated_survey_data("Proto-Prog")
-    survey2 = get_accumulated_survey_data("Classic-Prog")
-    survey3 = get_accumulated_survey_data("Neo-Prog")
-    survey4 = get_accumulated_survey_data("Contemporary-Prog")
-    all_surveys = survey1 + survey2 + survey3 + survey4
-    print(all_surveys)
-    highest_value = all_surveys.index(max(all_surveys))
-    return highest_value
 
-def get_band_of_week():
-    all_bands_list = compile_all_bands_list()
-    print(all_bands_list)
-    highest_survey_value_index = calculate_survey_data()
-    print(highest_survey_value_index)
-    band_of_week = all_bands_list[highest_survey_value_index]
-    return band_of_week
 
-band_recommendation = get_band_of_week()
-print(band_recommendation)
+
+
 
 def get_album_of_week_band_index(band_of_week):
+    """
+    Calls get band names function to get band name lists.
+    Checks for band name strings in each list.
+    If band name string included in list calls album of week function 
+    Passing in band name column index and worksheet name as arguments.
+    Receives band name and album name string data back from band of week function.
+    Returns band of week and album of week result
+
+    """
     band1 = get_band_names("Proto-Prog")
     band2 = get_band_names("Classic-Prog")
     band3 = get_band_names("Neo-Prog")

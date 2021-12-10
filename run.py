@@ -309,6 +309,53 @@ def calculate_survey_data():
     highest_value = all_surveys.index(max(all_surveys))
     return highest_value
 
+def get_band_of_week():
+    """
+    Calls all bands list function to get a single list of all bands.
+    calls calculate survey data function to get index of highest value in all survey results.
+    gets band of week from corresponding index in all bands list to index of highest survey value.
+    """
+    all_bands_list = compile_all_bands_list()
+    print(all_bands_list)
+    highest_survey_value_index = calculate_survey_data()
+    print(highest_survey_value_index)
+    band_of_week = all_bands_list[highest_survey_value_index]
+    return band_of_week
+
+band_recommendation = get_band_of_week()
+print(band_recommendation)
+
+    def get_album_of_week_band_index(band_of_week):
+    """
+    Calls get band names function to get band name lists.
+    Checks for band name strings in each list.
+    If band name string included in list calls album of week function 
+    Passing in band name column index and worksheet name as arguments.
+    Receives band name and album name string data back from band of week function.
+    Returns band of week and album of week result
+
+    """
+    band1 = get_band_names("Proto-Prog")
+    band2 = get_band_names("Classic-Prog")
+    band3 = get_band_names("Neo-Prog")
+    band4 = get_band_names("Contemporary-Prog")
+
+    if band_of_week in band1:
+        band_index = band1.index(band_of_week)
+        band_and_album_offer = get_album_of_week(band_index, "Proto-Prog")
+    elif band_of_week in band2:
+        band_index = band2.index(band_of_week)
+        band_and_album_offer = get_album_of_week(band_index, "Classic-Prog")
+    elif band_of_week in band3:
+        band_index = band3.index(band_of_week)
+        band_and_album_offer = get_album_of_week(band_index, "Neo-Prog")
+    elif band_of_week in band4:
+        band_index = band4.index(band_of_week)
+        band_and_album_offer = get_album_of_week(band_index, "Contemporary-Prog")
+    else:
+        print("Error: couldn't not find band for album of the week")
+    return band_and_album_offer
+
 def main():
     """
     function to call page functions in correct sequence.
