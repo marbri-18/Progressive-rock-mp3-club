@@ -292,6 +292,23 @@ def compile_all_bands_list():
     all_bands = band1 + band2 + band3 + band4
     return all_bands
 
+def calculate_survey_data():
+    """
+    function called from get band of week function.
+    Recieves accumulated (last Row) survey results
+    for each band category and compiles data into one list.
+    From compiled list calculates highest value and returns
+    index of highest value to get band of week function.
+    """ 
+    survey1 = get_accumulated_survey_data("Proto-Prog")
+    survey2 = get_accumulated_survey_data("Classic-Prog")
+    survey3 = get_accumulated_survey_data("Neo-Prog")
+    survey4 = get_accumulated_survey_data("Contemporary-Prog")
+    all_surveys = survey1 + survey2 + survey3 + survey4
+    print(all_surveys)
+    highest_value = all_surveys.index(max(all_surveys))
+    return highest_value
+
 def main():
     """
     function to call page functions in correct sequence.
