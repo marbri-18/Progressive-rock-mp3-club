@@ -322,10 +322,9 @@ def get_band_of_week():
     band_of_week = all_bands_list[highest_survey_value_index]
     return band_of_week
 
-band_recommendation = get_band_of_week()
-print(band_recommendation)
 
-    def get_album_of_week_band_index(band_of_week):
+
+def get_album_of_week_band_index(band_of_week):
     """
     Calls get band names function to get band name lists.
     Checks for band name strings in each list.
@@ -355,6 +354,25 @@ print(band_recommendation)
     else:
         print("Error: couldn't not find band for album of the week")
     return band_and_album_offer
+
+def get_album_of_week(band_index, worksheet):
+    """
+    Called by get album of week band index function.
+    Takes worksheet name and band of week column index as arguments.
+    Uses arguments and random number generator for row to get
+    album in column corresponding to band index.
+    returns album value as "recommendation" to get album of week band index function.
+    """ 
+    worksheet_col = band_index + 1
+    worksheet_row = value = (random.randint(1,5))
+    response = []
+    target_sheet = SHEET.worksheet(worksheet)
+    column = target_sheet.col_values(worksheet_col)
+    response.append(column[0])
+    response.append(column[worksheet_row])
+    return response
+
+
 
 def main():
     """
@@ -401,6 +419,12 @@ def main():
 
     band_recommendation = get_band_of_week()
     print(band_recommendation)
+
+    band_recommendation = get_band_of_week()
+    print(band_recommendation)
+
+    recommendation = get_album_of_week_band_index(band_recommendation)
+    print(recommendation)
 
     
 main()
