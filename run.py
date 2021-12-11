@@ -343,7 +343,7 @@ def main():
     print_instructions()
     
     q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
-    #print(q1_response)
+    print(q1_response)
     updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
     #print(updated_proto_prog)
     update_worksheet("Proto-Prog", updated_proto_prog)
@@ -357,7 +357,7 @@ def main():
     #print(updated_classic_prog)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_recommendations = get_user_input_recommendations("Classic-Prog", q2_response)
-    
+    print(f"From your responses in the Classic-progressive rock category, \n we recommend \n'{q2_recommendations[1]}' by '{q2_recommendations[0]}'\n")
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
     #print(q3_response)
@@ -365,14 +365,16 @@ def main():
     #print(updated_neo_prog)
     update_worksheet("Neo-Prog", updated_neo_prog)
     q3_recommendations = get_user_input_recommendations("Neo-Prog", q3_response)
-    
-    q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Mostly Autumn", "Dream Theater", "Radiohead")   
+    print(f"From your responses in the Neo-progressive rock category, \n we recommend \n'{q3_recommendations[1]}' by '{q3_recommendations[0]}'\n")
+
+    q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")   
     #print(q4_response)
     updated_contemporary_prog = calculate_total_survey("Contemporary-Prog", q4_response)
     #print(updated_contemporary_prog)
     update_worksheet("Contemporary-Prog", updated_contemporary_prog)
     q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
-    
+    print(f"From your responses in the Contemporary-progressive rock category, \n we recommend for you \n'{q4_recommendations[1]}' by '{q4_recommendations[0]}'\n")
+
     print(q1_recommendations)
     print(q2_recommendations)
     print(q3_recommendations)
