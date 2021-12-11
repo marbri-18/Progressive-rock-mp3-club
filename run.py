@@ -27,10 +27,13 @@ vdgg = proto_prog.col_values(6)
 columns = [beatles, pretty_things, the_nice, procol_harum, moody_blues, vdgg ]
 pprint(columns)
 """
-
-print("******************************************************************")
-print("*            Welcome to the Progressive Rock mp3 club           *")
-print("******************************************************************\n \n")
+color_red = fg("#FF0000") + bg("#FFF")
+color_black = fg("#000") + bg("#FFF") + attr(1)
+res = attr("reset")
+print(color_red + "******************************************************************" + res)
+print(color_black + "*            Welcome to the Progressive Rock mp3 club            *" + res)
+print(color_red + "******************************************************************" + res)
+print("\n")
 
 def generate_starting_worksheet_values():
     """
@@ -163,6 +166,7 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
         print(f"{band4}")
         print(f"{band5}")
         print(f"{band6}")
+
 
         score = survey_question(f"{band1}")  
         data.append(score)
@@ -345,12 +349,16 @@ def main():
     print_instructions()
     
     q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
-    print(q1_response)
+    #print(q1_response)
     updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
     #print(updated_proto_prog)
     update_worksheet("Proto-Prog", updated_proto_prog)
     q1_recommendations = get_user_input_recommendations("Proto-Prog", q1_response)
-    print(f"From your responses in the Proto-progressive rock category, \n we recommend \n'{q1_recommendations[1]}' by '{q1_recommendations[0]}'\n")
+    color_yellow = fg("#FFFF00")
+    res = attr("reset") 
+    print(color_yellow + "From your responses in the Proto-progressive rock category,")
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q1_recommendations[1]} by {q1_recommendations[0]}" + res)
 
 
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
@@ -359,7 +367,9 @@ def main():
     #print(updated_classic_prog)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_recommendations = get_user_input_recommendations("Classic-Prog", q2_response)
-    print(f"From your responses in the Classic-progressive rock category, \n we recommend \n'{q2_recommendations[1]}' by '{q2_recommendations[0]}'\n")
+    print(color_yellow + "From your responses in the Classic-progressive rock category,")
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q2_recommendations[1]} by {q2_recommendations[0]}" + res)
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
     #print(q3_response)
@@ -367,7 +377,9 @@ def main():
     #print(updated_neo_prog)
     update_worksheet("Neo-Prog", updated_neo_prog)
     q3_recommendations = get_user_input_recommendations("Neo-Prog", q3_response)
-    print(f"From your responses in the Neo-progressive rock category, \n we recommend \n'{q3_recommendations[1]}' by '{q3_recommendations[0]}'\n")
+    print(color_yellow + "From your responses in the Neo-progressive rock category,")
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q3_recommendations[1]} by {q3_recommendations[0]}" + res)
 
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")   
     #print(q4_response)
@@ -375,7 +387,9 @@ def main():
     #print(updated_contemporary_prog)
     update_worksheet("Contemporary-Prog", updated_contemporary_prog)
     q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
-    print(f"From your responses in the Contemporary-progressive rock category, \n we recommend for you \n'{q4_recommendations[1]}' by '{q4_recommendations[0]}'\n")
+    print(color_yellow + "From your responses in the Contemporary-progressive rock category,")
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q4_recommendations[1]} by {q4_recommendations[0]}" + res)
 
     
     
