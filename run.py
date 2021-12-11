@@ -154,9 +154,10 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
     call check if duplicates function - if results valid return result.
     Otherwise repeat question from beginning.
     """
-    data = []
+    
     error_data = True
     while error_data:
+        data = []
 
         print(f"Question {qnum}: {genre}")
         print(f"For the bands in the {genre} category which comprises of:")
