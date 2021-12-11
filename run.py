@@ -2,6 +2,8 @@ import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 import random
+from colored import fg, bg, attr
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -375,19 +377,24 @@ def main():
     q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
     print(f"From your responses in the Contemporary-progressive rock category, \n we recommend for you \n'{q4_recommendations[1]}' by '{q4_recommendations[0]}'\n")
 
-    print(q1_recommendations)
-    print(q2_recommendations)
-    print(q3_recommendations)
-    print(q4_recommendations)
+    
+    
+
+    
+    
 
     band_recommendation = get_band_of_week()
     #print(band_recommendation)
-
+    recommendation = get_album_of_week_band_index(band_recommendation)
     #band_recommendation = get_band_of_week()
     #print(band_recommendation)
-
-    recommendation = get_album_of_week_band_index(band_recommendation)
-    print(recommendation)
-
+    print("Thank you for completing our survey!\n")
+    print("from the responses you have given our recommendations of albums we think you will love are:\n")
+    print(f"{q1_recommendations[1]}' by '{q1_recommendations[0]}")
+    print(f"{q2_recommendations[1]}' by '{q2_recommendations[0]}")
+    print(f"{q3_recommendations[1]}' by '{q3_recommendations[0]}")
+    print(f"{q4_recommendations[1]}' by '{q4_recommendations[0]}\n")
+    print("Our album of the week on special offer is:\n")
+    print(f"{recommendation[1]} by {recommendation[0]}\n \n")
     
 main()
