@@ -200,7 +200,7 @@ def get_user_input_recommendations(worksheet, data):
     """
     highest_value = data.index(max(data))
     worksheet_col = highest_value + 1
-    worksheet_row = value = (random.randint(1,5))
+    worksheet_row = (random.randint(1,5))
     response = []
     target_sheet = SHEET.worksheet(worksheet)
     column = target_sheet.col_values(worksheet_col)
