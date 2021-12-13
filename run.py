@@ -388,15 +388,9 @@ def main():
     #print(updated_contemporary_prog)
     update_worksheet("Contemporary-Prog", updated_contemporary_prog)
     q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
-    print(color_yellow + "From your responses in the Contemporary-progressive rock category,")
+    print(color_yellow + "From your responses in the Contemporary-progressive rock category," + res)
     print(color_yellow + "we recommend" + res)
     print(color_yellow + f"{q4_recommendations[1]} by {q4_recommendations[0]}" + res)
-
-    
-    
-
-    
-    
 
     band_recommendation = get_band_of_week()
     #print(band_recommendation)
@@ -405,11 +399,11 @@ def main():
     #print(band_recommendation)
     print("Thank you for completing our survey!\n")
     print("from the responses you have given our recommendations of albums we think you will love are:\n")
-    print(f"{q1_recommendations[1]}' by '{q1_recommendations[0]}")
-    print(f"{q2_recommendations[1]}' by '{q2_recommendations[0]}")
-    print(f"{q3_recommendations[1]}' by '{q3_recommendations[0]}")
-    print(f"{q4_recommendations[1]}' by '{q4_recommendations[0]}\n")
+    print(color_yellow + f"{q1_recommendations[1]}' by '{q1_recommendations[0]}" + res)
+    print(color_yellow + f"{q2_recommendations[1]}' by '{q2_recommendations[0]}" + res)
+    print(color_yellow + f"{q3_recommendations[1]}' by '{q3_recommendations[0]}" + res)
+    print(color_yellow + f"{q4_recommendations[1]}' by '{q4_recommendations[0]}\n" + res)
     print("Our album of the week on special offer is:\n")
-    print(f"{recommendation[1]} by {recommendation[0]}\n \n")
+    print(color_yellow + f"{recommendation[1]} by {recommendation[0]}\n \n" + res)
     
 main()
