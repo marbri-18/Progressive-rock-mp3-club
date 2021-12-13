@@ -1,7 +1,12 @@
+"""
+Module to run Prog Rock mp3 Club
+"""
+#from pprint import pprint
+import random
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
-import random
+
+
 from colored import fg, bg, attr
 
 SCOPE = [
@@ -35,7 +40,7 @@ def generate_starting_worksheet_values():
         value = (random.randint(10, 30))
         start_list.append(value)
         i += 1
-    return (start_list)
+    return start_list
 
 
 def initiate_worksheet(worksheet):
@@ -177,7 +182,12 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
     return data
 
 
-def calculate_total_survey(worksheet, data):
+def calc_total_survey(worksheet, data):
+    """
+    gets all data from worksheet survey rows
+    adds passed in data from user survey to last data row
+    returns result as list
+    """
     start_data = SHEET.worksheet(worksheet).get_all_values()
     start_data_row = start_data[-1]
     result_data = []
@@ -217,7 +227,7 @@ def get_user_input_recommendations(worksheet, data):
 
 
 def get_band_names(worksheet):
-    """ 
+    """
     Function called by compile all bands list function.
     Gets band names from worksheet specified in arguments
     and return as list.
@@ -232,7 +242,7 @@ def get_accumulated_survey_data(worksheet):
     Function called by calculate survey data function.
     gets last row values from worksheet specified in arguments.
     returns values to calculate survey data function.
-    """     
+    """
     survey_data = SHEET.worksheet(worksheet).get_all_values()
     survey_data_row = survey_data[-1]
     return survey_data_row
@@ -245,7 +255,7 @@ def compile_all_bands_list():
     in each of the four category questions.
     Compiles single list for all bands from four category lists.
     returns single list to get band of week function.
-    """ 
+    """
     band1 = get_band_names("Proto-Prog")
     band2 = get_band_names("Classic-Prog")
     band3 = get_band_names("Neo-Prog")
@@ -322,7 +332,7 @@ def get_album_of_week(band_index, worksheet):
     Uses arguments and random number generator for row to get
     album in column corresponding to band index.
     returns album value recommendation.
-    """ 
+    """
     worksheet_col = band_index + 1
     worksheet_row = (random.randint(1, 5))
     response = []
@@ -343,53 +353,52 @@ def main():
     initiate_worksheet("Contemporary-Prog")
     get_name()
     print_instructions()
-    
 
-    q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
-    updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
+    q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")
+    updated_proto_prog = calc_total_survey("Proto-Prog", q1_response)
     update_worksheet("Proto-Prog", updated_proto_prog)
     q1_rec = get_user_input_recommendations("Proto-Prog", q1_response)
     color_yellow = fg("#FFFF00")
-    res = attr("reset")
-    print(color_yellow + "From your responses in the Proto-progressive rock category,")
+    print(color_yellow + "From your responses")
     print(color_yellow + "we recommend" + res)
     print(color_yellow + f"{q1_rec[1]} by {q1_rec[0]}" + res)
 
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
-    updated_classic_prog = calculate_total_survey("Classic-Prog", q2_response)
+    updated_classic_prog = calc_total_survey("Classic-Prog", q2_response)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_rec = get_user_input_recommendations("Classic-Prog", q2_response)
-    print(color_yellow + "From your responses in the Classic-progressive rock category,")
+    print(color_yellow + "From your responses")
     print(color_yellow + "we recommend" + res)
     print(color_yellow + f"{q2_rec[1]} by {q2_rec[0]}" + res)
 
-    q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
-    updated_neo_prog = calculate_total_survey("Neo-Prog", q3_response)
+    q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")
+    updated_neo_prog = calc_total_survey("Neo-Prog", q3_response)
     update_worksheet("Neo-Prog", updated_neo_prog)
-    q3_rec = get_user_input_rec("Neo-Prog", q3_response)
-    print(color_yellow + "From your responses in the Neo-progressive rock category,")
+    q3_rec = get_user_input_recommendations("Neo-Prog", q3_response)
+    print(color_yellow + "From your responses")
     print(color_yellow + "we recommend" + res)
     print(color_yellow + f"{q3_rec[1]} by {q3_rec[0]}" + res)
 
-    q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")   
-    updated_contemporary_prog = calculate_total_survey("Contemporary-Prog", q4_response)
-    update_worksheet("Contemporary-Prog", updated_contemporary_prog)
-    q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
-    print(color_yellow + "From your responses in the Contemporary-progressive rock category," + res)
+    q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")
+    updated_cont_prog = calc_total_survey("Contemporary-Prog", q4_response)
+    update_worksheet("Contemporary-Prog", updated_cont_prog)
+    q4_rec = get_user_input_recommendations("Contemporary-Prog", q4_response)
+    print(color_yellow + "From your responses" + res)
     print(color_yellow + "we recommend" + res)
-    print(color_yellow + f"{q4_recommendations[1]} by {q4_recommendations[0]}" + res)
+    print(color_yellow + f"{q4_rec[1]} by {q4_rec[0]}" + res)
 
     band_recommendation = get_band_of_week()
-    recommendation = get_album_of_week_band_index(band_recommendation)
-    
+    rec = get_album_of_week_band_index(band_recommendation)
+
     print("Thank you for completing our survey!\n")
-    print("from the responses you have given our recommendations of albums we think you will love are:\n")
+    print("from the responses you have given")
+    print("we think you will love are:\n")
     print(color_yellow + f"{q1_rec[1]}' by '{q1_rec[0]}" + res)
-    print(color_yellow + f"{q2_recommendations[1]}' by '{q2_recommendations[0]}" + res)
-    print(color_yellow + f"{q3_recommendations[1]}' by '{q3_recommendations[0]}" + res)
-    print(color_yellow + f"{q4_recommendations[1]}' by '{q4_recommendations[0]}\n" + res)
+    print(color_yellow + f"{q2_rec[1]}' by '{q2_rec[0]}" + res)
+    print(color_yellow + f"{q3_rec[1]}' by '{q3_rec[0]}" + res)
+    print(color_yellow + f"{q4_rec[1]}' by '{q4_rec[0]}\n" + res)
     print("Our album of the week on special offer is:\n")
-    print(color_yellow + f"{recommendation[1]} by {recommendation[0]}\n \n" + res)
+    print(color_yellow + f"{rec[1]} by {rec[0]}\n \n" + res)
 
 
 main()
