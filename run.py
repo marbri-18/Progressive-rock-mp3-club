@@ -4,7 +4,6 @@ from pprint import pprint
 import random
 from colored import fg, bg, attr
 
-
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -16,17 +15,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("progressive rock mp3 club")
 
-"""
-proto_prog = SHEET.worksheet("Proto-Prog")
-beatles = proto_prog.col_values(1)[1:6]
-pretty_things = proto_prog.col_values(2)
-the_nice = proto_prog.col_values(3)
-procol_harum = proto_prog.col_values(4)
-moody_blues = proto_prog.col_values(5)
-vdgg = proto_prog.col_values(6)
-columns = [beatles, pretty_things, the_nice, procol_harum, moody_blues, vdgg ]
-pprint(columns)
-"""
 color_red = fg("#FF0000") + bg("#FFF")
 color_black = fg("#000") + bg("#FFF") + attr(1)
 res = attr("reset")
@@ -60,8 +48,6 @@ def initiate_worksheet(worksheet):
     target_worksheet.append_row(data)
 
 
-
-
 def get_name():
     """
     Gets name input from user
@@ -83,8 +69,6 @@ def get_name():
     print("\n")
 
 
-
-
 def print_instructions():
     """
     Prints welcome and instructions to the user on completing the prog- rock survey
@@ -97,6 +81,7 @@ def print_instructions():
     print("Please note, you must give a different value for each band and you must give a score for every band.")
     print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
     print("\n -------------------------------------------------------\n")
+
 
 def survey_question(band_name):
     """
@@ -111,6 +96,7 @@ def survey_question(band_name):
         print("\n")
         error = check_input_range_and_integer(score)
     return score
+
 
 def check_input_range_and_integer(num):
     """
@@ -133,13 +119,13 @@ def check_input_range_and_integer(num):
         print("You have not entered a number for this question. This question must be answered with a number between 1 and 6.")
         return True
 
+
 def check_if_duplicates(input):
     """ 
     checks complete question (genre) data input by user for duplicate values.
     if data valid returns error = false to get get question input function.
     if data not valid prints error message to user and returns error = true to get question input function.
     """
-
     if len(input) == len(set(input)):
         return False
     else:
@@ -154,7 +140,6 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
     call check if duplicates function - if results valid return result.
     Otherwise repeat question from beginning.
     """
-    
     error_data = True
     while error_data:
         data = []
@@ -167,7 +152,6 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
         print(f"{band4}")
         print(f"{band5}")
         print(f"{band6}")
-
 
         score = survey_question(f"{band1}")  
         data.append(score)
@@ -185,6 +169,7 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
         error_data = check_if_duplicates(data)
     return data
 
+
 def calculate_total_survey(worksheet, data):
     start_data = SHEET.worksheet(worksheet).get_all_values()
     start_data_row = start_data[-1]
@@ -194,12 +179,14 @@ def calculate_total_survey(worksheet, data):
         result_data.append(result)
     return result_data
 
+
 def update_worksheet(worksheet, data):
     """
     appends update accumulated data row to worksheet specified in arguments.
     """
     target_worksheet = SHEET.worksheet(worksheet)
     target_worksheet.append_row(data)
+
 
 def get_user_input_recommendations(worksheet, data):
     """
@@ -221,6 +208,7 @@ def get_user_input_recommendations(worksheet, data):
     response.append(column[worksheet_row])
     return response
 
+
 def get_band_names(worksheet):
     """ 
     Function called by compile all bands list function.
@@ -231,6 +219,7 @@ def get_band_names(worksheet):
     band_data_row = band_data[0]
     return band_data_row
 
+
 def get_accumulated_survey_data(worksheet):
     """
     Function called by calculate survey data function.
@@ -240,6 +229,7 @@ def get_accumulated_survey_data(worksheet):
     survey_data= SHEET.worksheet(worksheet).get_all_values()
     survey_data_row = survey_data[-1]
     return survey_data_row
+
 
 def compile_all_bands_list():
     """
@@ -256,6 +246,7 @@ def compile_all_bands_list():
     all_bands = band1 + band2 + band3 + band4
     return all_bands
 
+
 def calculate_survey_data():
     """
     function called by get band of week function.
@@ -268,7 +259,6 @@ def calculate_survey_data():
     survey3 = get_accumulated_survey_data("Neo-Prog")
     survey4 = get_accumulated_survey_data("Contemporary-Prog")
     all_surveys = survey1 + survey2 + survey3 + survey4
-    #print(all_surveys)
     highest_value = all_surveys.index(max(all_surveys))
     return highest_value
 
@@ -280,12 +270,9 @@ def get_band_of_week():
     gets band of week from corresponding index in all bands list to index of highest survey value.
     """
     all_bands_list = compile_all_bands_list()
-    #print(all_bands_list)
     highest_survey_value_index = calculate_survey_data()
-    #print(highest_survey_value_index)
     band_of_week = all_bands_list[highest_survey_value_index]
     return band_of_week
-
 
 
 def get_album_of_week_band_index(band_of_week):
@@ -319,6 +306,7 @@ def get_album_of_week_band_index(band_of_week):
         print("Error: couldn't not find band for album of the week")
     return band_and_album_offer
 
+
 def get_album_of_week(band_index, worksheet):
     """
     Called by get album of week band index function.
@@ -337,7 +325,6 @@ def get_album_of_week(band_index, worksheet):
     return response
 
 
-
 def main():
     """
     function to call page functions in correct sequence.
@@ -350,9 +337,7 @@ def main():
     print_instructions()
     
     q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")   
-    #print(q1_response)
     updated_proto_prog = calculate_total_survey("Proto-Prog", q1_response)
-    #print(updated_proto_prog)
     update_worksheet("Proto-Prog", updated_proto_prog)
     q1_recommendations = get_user_input_recommendations("Proto-Prog", q1_response)
     color_yellow = fg("#FFFF00")
@@ -361,11 +346,8 @@ def main():
     print(color_yellow + "we recommend" + res)
     print(color_yellow + f"{q1_recommendations[1]} by {q1_recommendations[0]}" + res)
 
-
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
-    #print(q2_response)
     updated_classic_prog = calculate_total_survey("Classic-Prog", q2_response)
-    #print(updated_classic_prog)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_recommendations = get_user_input_recommendations("Classic-Prog", q2_response)
     print(color_yellow + "From your responses in the Classic-progressive rock category,")
@@ -373,9 +355,7 @@ def main():
     print(color_yellow + f"{q2_recommendations[1]} by {q2_recommendations[0]}" + res)
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")   
-    #print(q3_response)
     updated_neo_prog = calculate_total_survey("Neo-Prog", q3_response)
-    #print(updated_neo_prog)
     update_worksheet("Neo-Prog", updated_neo_prog)
     q3_recommendations = get_user_input_recommendations("Neo-Prog", q3_response)
     print(color_yellow + "From your responses in the Neo-progressive rock category,")
@@ -383,9 +363,7 @@ def main():
     print(color_yellow + f"{q3_recommendations[1]} by {q3_recommendations[0]}" + res)
 
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")   
-    #print(q4_response)
     updated_contemporary_prog = calculate_total_survey("Contemporary-Prog", q4_response)
-    #print(updated_contemporary_prog)
     update_worksheet("Contemporary-Prog", updated_contemporary_prog)
     q4_recommendations = get_user_input_recommendations("Contemporary-Prog", q4_response)
     print(color_yellow + "From your responses in the Contemporary-progressive rock category," + res)
@@ -393,10 +371,8 @@ def main():
     print(color_yellow + f"{q4_recommendations[1]} by {q4_recommendations[0]}" + res)
 
     band_recommendation = get_band_of_week()
-    #print(band_recommendation)
     recommendation = get_album_of_week_band_index(band_recommendation)
-    #band_recommendation = get_band_of_week()
-    #print(band_recommendation)
+    
     print("Thank you for completing our survey!\n")
     print("from the responses you have given our recommendations of albums we think you will love are:\n")
     print(color_yellow + f"{q1_recommendations[1]}' by '{q1_recommendations[0]}" + res)
