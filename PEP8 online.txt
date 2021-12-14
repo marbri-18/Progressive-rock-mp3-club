@@ -1,10 +1,7 @@
 Check results
 =============
 
-E501:373:80:line too long (155 > 79 characters)
-E501:379:80:line too long (128 > 79 characters)
-E501:385:80:line too long (127 > 79 characters)
-E501:391:80:line too long (158 > 79 characters)
+
 
 Code
 =============
@@ -152,13 +149,14 @@ def check_if_duplicates(list_input):
         return True
 
 
-def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
+def get_question_input(qnum, genre, bands):
     """
     Print rate bands list to user.
     call survey questions fuction and recieve back results.
     call check if duplicates function - if results valid return result.
     Otherwise repeat question from beginning.
     """
+    band1, band2, band3, band4, band5, band6 = bands
     error_data = True
     while error_data:
         data = []
@@ -380,25 +378,49 @@ def main():
     get_name()
     print_instructions()
 
-    q1_response = get_question_input(1, "Proto-Prog Rock", "The Beatles", "Pink Floyd", "The Pretty Things", "The Nice", "Procol Harum", "The Moody Blues")
+    q1_bands = ["The Beatles",
+                "Pink Floyd",
+                "The Pretty Things",
+                "The Nice",
+                "Procol Harum",
+                "The Moody Blues"]
+    q1_response = get_question_input(1, "Proto-Prog Rock", q1_bands)
     updated_proto_prog = calc_total_survey("Proto-Prog", q1_response)
     update_worksheet("Proto-Prog", updated_proto_prog)
     q1_rec = get_user_input_recommendations("Proto-Prog", q1_response)
     print_recommendations("Proto-Prog Rock", q1_rec)
 
-    q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
+    q2_bands = ["Pink Floyd",
+                "Genesis",
+                "Yes",
+                "Hawkwind",
+                "Rush",
+                "King Crimson"]
+    q2_response = get_question_input(2, "Classic Prog Rock", q2_bands)
     updated_classic_prog = calc_total_survey("Classic-Prog", q2_response)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_rec = get_user_input_recommendations("Classic-Prog", q2_response)
     print_recommendations("Classic Prog Rock", q2_rec)
 
-    q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")
+    q3_bands = ["Twelfth Night",
+                "Marillion",
+                "IQ",
+                "Pallas",
+                "Pendragon",
+                "Solstice"]
+    q3_response = get_question_input(3, "Neo-Prog Rock", q3_bands)
     updated_neo_prog = calc_total_survey("Neo-Prog", q3_response)
     update_worksheet("Neo-Prog", updated_neo_prog)
     q3_rec = get_user_input_recommendations("Neo-Prog", q3_response)
     print_recommendations("Neo-Prog Rock", q3_rec)
 
-    q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")
+    q4_bands = ["The Flower Kings",
+                "The Tangent",
+                "Porcupine Tree",
+                "Spock's Beard",
+                "Dream Theater",
+                "Frost*"]
+    q4_response = get_question_input(4, "Contemporary Prog Rock", q4_bands)
     updated_cont_prog = calc_total_survey("Contemporary-Prog", q4_response)
     update_worksheet("Contemporary-Prog", updated_cont_prog)
     q4_rec = get_user_input_recommendations("Contemporary-Prog", q4_response)
