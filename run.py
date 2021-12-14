@@ -155,7 +155,7 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
 
         print("")
         print(f"Question {qnum}: {genre}")
-        print(f"For the bands in the {genre} category which comprises of:")
+        print(f"For the bands in the {genre} category:")
         print(f"{band1}")
         print(f"{band2}")
         print(f"{band3}")
@@ -341,6 +341,24 @@ def get_album_of_week(band_index, worksheet):
     return response
 
 
+def print_recommendations(category, q_rec):
+    """
+    Prints out album and band reccomendations
+    for specified arguments to user.
+    """
+    q_rec_album = q_rec[1]
+    album = q_rec_album.split(":")[0]
+    link = q_rec_album.split(": ", 1)[1]
+    print("*************************************")
+    print("From your responses")
+    print(f"in the {category} category")
+    print("we recommend")
+    print(f"{album}")
+    print(f"{link}")
+    print(f"by {q_rec[0]}")
+    print("*************************************")
+
+
 def main():
     """
     function to call page functions in correct sequence.
@@ -356,37 +374,25 @@ def main():
     updated_proto_prog = calc_total_survey("Proto-Prog", q1_response)
     update_worksheet("Proto-Prog", updated_proto_prog)
     q1_rec = get_user_input_recommendations("Proto-Prog", q1_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q1_rec[1]}")
-    print(f"by {q1_rec[0]}")
+    print_recommendations("Proto-Prog Rock", q1_rec)
 
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
     updated_classic_prog = calc_total_survey("Classic-Prog", q2_response)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_rec = get_user_input_recommendations("Classic-Prog", q2_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q2_rec[1]}")
-    print(f"by {q2_rec[0]}")
+    print_recommendations("Classic Prog Rock", q2_rec)
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")
     updated_neo_prog = calc_total_survey("Neo-Prog", q3_response)
     update_worksheet("Neo-Prog", updated_neo_prog)
     q3_rec = get_user_input_recommendations("Neo-Prog", q3_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q3_rec[1]}")
-    print(f"by {q3_rec[0]}")
+    print_recommendations("Neo-Prog Rock", q3_rec)
 
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")
     updated_cont_prog = calc_total_survey("Contemporary-Prog", q4_response)
     update_worksheet("Contemporary-Prog", updated_cont_prog)
     q4_rec = get_user_input_recommendations("Contemporary-Prog", q4_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q4_rec[1]}")
-    print(f"by {q4_rec[0]}")
+    print_recommendations("Contemporary Prog Rock", q4_rec)
 
     band_recommendation = get_band_of_week()
     rec = get_album_of_week_band_index(band_recommendation)
