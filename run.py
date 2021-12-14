@@ -5,8 +5,6 @@ Module to run Prog Rock mp3 Club
 import random
 import gspread
 from google.oauth2.service_account import Credentials
-
-
 from colored import fg, bg, attr
 
 SCOPE = [
