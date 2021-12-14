@@ -404,7 +404,7 @@ def main():
     print(f"by {q4_rec[0]}")
     print("")
     print("getting album of week ....")
-    Print("")
+    print("")
     print("Our album of the week on special offer is:\n")
     print(f"{rec[1]}")
     print(f"by {rec[0]}\n \n")
