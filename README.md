@@ -1,33 +1,33 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Progressive Rock mp3 Club
+## Portfolio-project-2-Python Essentials
+
+### Overview
+the Progressive Rock mp3 club is an imagined online resource where users upon joining will be able to download progressive rock music. This particular app focusses upon the registration of the user. As part of the registration the user is asked a series of four survey questions. From the responses to each of the four questions a recommendation is made for an album the user may like. On answering all of the four questions an album of the week is recommended to the user.
+
+### How it works
+The four questions are broken down into categories relating to different time periods or genres of progressive rock music. The questions in each category provide the user with 6 choices of band and asks the user to rate the six bands in order of preference. Upon completion of each category, a (randomly generated) recommendation is made for an album the user may like by their favourite band in the category. When all four category questions are answered the user is given an album of the week recomendation. The album of the week is generated through a process as follows. At the start of the program, random results are generated for each band and loaded into the worksheets. The random results simulate the numbers of mp3 downloads for each band in the previous week. The users survey answers are added to the random scores and an album is selected randomly from the band with the highest score as the album of the week recommendation.
+
+### Data Model
 
 flow chart link = https://lucid.app/lucidchart/745dce97-b375-477a-8206-305d663e8823/edit?beaconFlowId=CB530221E3E599B0&invitationId=inv_99fdfcce-3d1c-4598-b6cc-7f0c1f72693f&page=0_0#
+Features
+input prompts
+Input validation
 
-Welcome Martin Bridgman,
+Data model
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+Potential future modifications
 
-## Reminders
+Testing
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+Bugs
 
-## Creating the Heroku app
+Validator testing
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+Deployment
 
-1. `heroku/python`
-2. `heroku/nodejs`
+Credits
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
 
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
