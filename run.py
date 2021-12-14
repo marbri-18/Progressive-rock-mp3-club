@@ -389,7 +389,7 @@ def main():
 
     print("Thank you for completing our survey!\n")
     print("from the responses you have given")
-    print("we think you will love are:\n")
+    print("we think the albums you will love are:\n")
     print(f"{q1_rec[1]}' by '{q1_rec[0]}")
     print(f"{q2_rec[1]}' by '{q2_rec[0]}")
     print(f"{q3_rec[1]}' by '{q3_rec[0]}")
