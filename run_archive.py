@@ -1,9 +1,11 @@
 """
 Module to run Prog Rock mp3 Club
 """
+#from pprint import pprint
 import random
 import gspread
 from google.oauth2.service_account import Credentials
+#from colored import fg, bg, attr
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,18 +18,19 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("progressive rock mp3 club")
 
-
-print("********************************************")
-print("* Welcome to the Progressive Rock mp3 club *")
-print("********************************************")
+color_red = fg("#FF0000") + bg("#FFF")
+color_black = fg("#000") + bg("#FFF") + attr(1)
+res = attr("reset")
+print(color_red + "********************************************" + res)
+print(color_black + "* Welcome to the Progressive Rock mp3 club *" + res)
+print(color_red + "********************************************" + res)
 print("\n")
 
 
 def generate_starting_worksheet_values():
     """
     generates and returns six random numbers in a list.
-    returned list to be used for simulated starting accumulated
-    survey values.
+    returned list to be used for simulated starting accumulated survey values.
     """
     i = 0
     start_list = []
@@ -54,8 +57,7 @@ def get_name():
     Gets name input from user
     validates that user has input a name of three characters or more.
     if not valid reports error to use and repeats request.
-    if valid welcomes the user
-    and sends request to user to complete survey.
+    if valid welcomes the user and sends request to user to complete survey.
     """
     error = True
     while error:
@@ -65,10 +67,9 @@ def get_name():
             error = True
         else:
             error = False
-    print("\n________________________________________\n")
+    print("\n___________________________________________________________\n")
     print(f"Welcome {name}, \nPlease complete our quick survey")
-    print("So we can provide you with recommendations")
-    print("for music you will love")
+    print("So we can provide you with recommendations for music you will love")
     print("\n")
 
 
@@ -153,7 +154,6 @@ def get_question_input(qnum, genre, band1, band2, band3, band4, band5, band6):
     while error_data:
         data = []
 
-        print("")
         print(f"Question {qnum}: {genre}")
         print(f"For the bands in the {genre} category which comprises of:")
         print(f"{band1}")
@@ -356,33 +356,34 @@ def main():
     updated_proto_prog = calc_total_survey("Proto-Prog", q1_response)
     update_worksheet("Proto-Prog", updated_proto_prog)
     q1_rec = get_user_input_recommendations("Proto-Prog", q1_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q1_rec[1]} by {q1_rec[0]}")
+    color_yellow = fg("#FFFF00")
+    print(color_yellow + "From your responses")
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q1_rec[1]} by {q1_rec[0]}" + res)
 
     q2_response = get_question_input(2, "Classic Prog Rock", "Pink Floyd", "Genesis", "Yes", "Hawkwind", "Rush", "King Crimson")
     updated_classic_prog = calc_total_survey("Classic-Prog", q2_response)
     update_worksheet("Classic-Prog", updated_classic_prog)
     q2_rec = get_user_input_recommendations("Classic-Prog", q2_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q2_rec[1]} by {q2_rec[0]}")
+    print(color_yellow + "From your responses")
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q2_rec[1]} by {q2_rec[0]}" + res)
 
     q3_response = get_question_input(3, "Neo-Prog Rock", "Twelfth Night", "Marillion", "IQ", "Pallas", "Pendragon", "Solstice")
     updated_neo_prog = calc_total_survey("Neo-Prog", q3_response)
     update_worksheet("Neo-Prog", updated_neo_prog)
     q3_rec = get_user_input_recommendations("Neo-Prog", q3_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q3_rec[1]} by {q3_rec[0]}")
+    print(color_yellow + "From your responses")
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q3_rec[1]} by {q3_rec[0]}" + res)
 
     q4_response = get_question_input(4, "Contemporary Prog Rock", "Flower Kings", "The Tangent", "Porcupine Tree", "Spock's Beard", "Dream Theater", "Frost*")
     updated_cont_prog = calc_total_survey("Contemporary-Prog", q4_response)
     update_worksheet("Contemporary-Prog", updated_cont_prog)
     q4_rec = get_user_input_recommendations("Contemporary-Prog", q4_response)
-    print("From your responses")
-    print("we recommend")
-    print(f"{q4_rec[1]} by {q4_rec[0]}")
+    print(color_yellow + "From your responses" + res)
+    print(color_yellow + "we recommend" + res)
+    print(color_yellow + f"{q4_rec[1]} by {q4_rec[0]}" + res)
 
     band_recommendation = get_band_of_week()
     rec = get_album_of_week_band_index(band_recommendation)
@@ -390,12 +391,12 @@ def main():
     print("Thank you for completing our survey!\n")
     print("from the responses you have given")
     print("we think you will love are:\n")
-    print(f"{q1_rec[1]}' by '{q1_rec[0]}")
-    print(f"{q2_rec[1]}' by '{q2_rec[0]}")
-    print(f"{q3_rec[1]}' by '{q3_rec[0]}")
-    print(f"{q4_rec[1]}' by '{q4_rec[0]}\n")
+    print(color_yellow + f"{q1_rec[1]}' by '{q1_rec[0]}" + res)
+    print(color_yellow + f"{q2_rec[1]}' by '{q2_rec[0]}" + res)
+    print(color_yellow + f"{q3_rec[1]}' by '{q3_rec[0]}" + res)
+    print(color_yellow + f"{q4_rec[1]}' by '{q4_rec[0]}\n" + res)
     print("Our album of the week on special offer is:\n")
-    print(f"{rec[1]} by {rec[0]}\n \n")
+    print(color_yellow + f"{rec[1]} by {rec[0]}\n \n" + res)
 
 
 main()
