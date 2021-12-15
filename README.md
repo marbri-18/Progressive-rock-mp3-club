@@ -62,15 +62,19 @@ figure1: Progressive Rock mp3 Club flowchart
         *function: get_band_of_week*
         *function: get_album_of_week_band_index*
         *function: get_album_of_week*
+    7. The main function determines the sequence of displaying messages to the user and calling functions to process data.
+        *function: main*
 
 
 
 ### validation features
-1. first name
+1. first name: the first name input is checked for being three characters or more
+2. The question options responses are validated on input for:
+    - must not be blank,
+    - must be integer in range 1 to 6,
+3. Upon completion of a question (all six options) the question values are checked to ensure there are no duplicated values.
 
-
-
-Potential future modifications
+### Potential future modifications
 
 Testing
 
