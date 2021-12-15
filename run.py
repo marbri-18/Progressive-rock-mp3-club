@@ -65,11 +65,10 @@ def get_name():
             error = True
         else:
             error = False
-    #print("\n________________________________________\n")
+
     print(f"Welcome {name}, \nPlease complete our quick survey")
     print("So we can provide you with recommendations")
     print("for music you will love")
-    #print("\n")
 
 
 def print_instructions():
@@ -84,7 +83,6 @@ def print_instructions():
     print("Please note, you must give a different value for each band")
     print("and you must give a score for every band.")
     print("Your response must be a number - eg/ 1, 2 3, 4, 5, or 6. \n")
-    #print("\n -------------------------------------------------------\n")
 
 
 def survey_question(band_name):

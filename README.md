@@ -102,13 +102,41 @@ The run.py code was copied into the PEP8 online Python code validator and no iss
 ![screenshot of PEP8 online Python code validator results for run.py](pep8_testing_screenshot.png)
 screenshot of PEP8 online Python code validator results for run.py
 
-Bugs
+There are no problems reported in the Gitpod VS code editor
 
+### Bugs
 
+There are no outstanding known bugs.
+
+1. A bug was discovered in testing in the following circumstances:
+- entering a duplicate value for an option within a question and receiving an error.
+- Subsequently entering valid values
+Outcome: An error message occured reporting duplicate values could not be entered.
+Cause: The blank list to which data was appended was declared outside of the while loop. Therfore as the loop continued after a data error the list was not being reset to blank. Duplicate values were found in validation because they duplicated non-cleared values.
+Solution: Declare the blank list for appending data inside and at start of while loop.
+
+### Other issues
+After successful setting up and testing of the Heroku Code Institute terminal App and before deployment of the project something appeared to break. Upon opening and running the program in the terminal, the terminal just printed out the data in the worksheets and would not otherwise function. Rather than solving this problem I set up a new platform which now functions as expected. The original problem is not known for certain, but I have been advised by my Mentor that sometimes if the App is left on automatic deployment some commits to GitHub can trip it up.
+
+I put in a lot of work to clear some 100+ error messages/warnings in VS Code for line length over 80 characters. This included abbreviating variable names, wrappings lists over a number of lines etc.
 
 Deployment
+This project was deployed using Code Institute's terminal a on a Heroku platform template.
+
+Steps for deployment
+- Create a new Heroku app
+- set the buildbacks to Python and NodeJS in that order
+- Link the Heroku App to the corresponding GitHub repository
+- click Deploy
+- Set deployment to automatic deployment.
+*from Code Institute Deployment Paragraph - sample README - Ultimate Battleships*
 
 Credits
+- Code Institute for Python Essentials module and Heroku terminal app.
+- My mentor Sammy Dartnall for overall guidance, encouragement and support and in particular for advice on passing in a list as an argument to a function. This set me a challenge that proved immensely frustrating in its solving but very satisfying and fulfilling in its outcome. It also seems to me to be a very valuable learning outcome.
+- I found helpful advice on Stack Overflow for checking of duplicate values in a list, slicing strings on characters and wrapping lists over multiple lines.
+- I used Colored (https://pypi.org/project/colored/) for formatting and colouring of text output in development but this was not carried through to the final version.
+- I used Lucid (https://lucid.app/) to produce my project flowchart.
 
 
 
