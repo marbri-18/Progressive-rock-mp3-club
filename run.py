@@ -437,6 +437,7 @@ def main():
     print("Our album of the week on special offer is:\n")
     print(f"{rec[1]}")
     print(f"by {rec[0]}\n \n")
+    print("Select 'Run Program' to repeat survey.)
 
 
 main()
