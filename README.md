@@ -75,12 +75,36 @@ figure1: Progressive Rock mp3 Club flowchart
 3. Upon completion of a question (all six options) the question values are checked to ensure there are no duplicated values.
 
 ### Potential future modifications
+- In development Colored (https://pypi.org/project/colored/) was used to provide colouring and text formatting to the output to terminal. Testing revealed this was not supported by the Code Institute terminal so was removed from the final project submission. These improvements could be implemented in a better coding environment.
+- Similarly hyperlinks seem not to work within the Code Institute terminal. Testing shows they are fully functional in other coding environments.
+- Clearly it would be best practice for data to be stored in a database rather than Google sheets. There would be plenty of scope for a much wider set of data to be used in a more appropriate back-end environment.
+- With less restrictions imposed by the front and back end environments there would be options to provide, images, link and mp3 playbacks amongst the outputs to the user. 
 
-Testing
+### Testing
+Testing was conducted extensively by inputing sample responses into both the Gitpod VScode editor terminal and the Code Insitute Heroku terminal. Specifically:
+1. Testing the following invalid data inputs for first name produces correct program response:
+- less than three characters
+- blank input
+- Non-alphabetical characters were not tested since this would not have any impact on the running of the program.
+2. Testing that invalid inputs for question options produces correct program response:
+-   blank input
+-   entering zero
+-   entering numerals with decimal points
+-   entering values outside of range 1 to 6
+-   entering non numerical characters
+3. Testing that duplicate option values within questions produces the correct response:
+- Entering duplicate values for options.
+4. Testing that the program proceeded as expected upon entering valid inputs after entering invalid inputs (see bugs below).
+5. Testing a range of various valid inputs to check correct data is returned for corresponding inputs.
+
+### Validator testing
+The run.py code was copied into the PEP8 online Python code validator and no issues were reported (see figure 2 below)
+![screenshot of PEP8 online Python code validator results for run.py](pep8_testing_screenshot.png)
+screenshot of PEP8 online Python code validator results for run.py
 
 Bugs
 
-Validator testing
+
 
 Deployment
 
